@@ -55,7 +55,7 @@ Widget build(BuildContext context) {
 	appBar: new AppBar(
 		title: new Text("Calculator"),
 	), //AppBar
-	backgroundColor: Colors.white38,
+	backgroundColor: Colors.white,
 	body: Column(
 		children: <Widget>[
 		Expanded(
@@ -68,17 +68,17 @@ Widget build(BuildContext context) {
 					alignment: Alignment.centerRight,
 					child: Text(
 						userInput,
-						style: TextStyle(fontSize: 18, color: Colors.white),
+						style: TextStyle(fontSize: 23, color: Colors.black),
 					),
 					),
 					Container(
-					padding: EdgeInsets.all(15),
+					 padding: EdgeInsets.all(15),
 					alignment: Alignment.centerRight,
 					child: Text(
 						answer,
 						style: TextStyle(
 							fontSize: 30,
-							color: Colors.white,
+							color: Colors.black,
 							fontWeight: FontWeight.bold),
 					),
 					)

@@ -27,10 +27,14 @@ var answer = '';
 
 // Array of button
 final List<String> buttons = [
-	'C',
+	'AC',
 	'+/-',
 	'%',
 	'DEL',
+  'cos',
+  'sin',
+  'tan',
+  'log',
 	'7',
 	'8',
 	'9',
@@ -53,7 +57,7 @@ final List<String> buttons = [
 Widget build(BuildContext context) {
 	return Scaffold(
 	appBar: new AppBar(
-		title: new Text("Calculator"),
+	title:  new Text("Calculator"),
 	), //AppBar
 	backgroundColor: Colors.white,
 	body: Column(
@@ -64,19 +68,19 @@ Widget build(BuildContext context) {
 				mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 				children: <Widget>[
 					Container(
-					padding: EdgeInsets.all(20),
+					padding: const EdgeInsets.all(20),
 					alignment: Alignment.centerRight,
 					child: Text(
 						userInput,
-						style: TextStyle(fontSize: 23, color: Colors.black),
+						style: const TextStyle(fontSize: 23, color: Colors.black),
 					),
 					),
 					Container(
-					 padding: EdgeInsets.all(15),
+					padding: const EdgeInsets.all(15),
 					alignment: Alignment.centerRight,
 					child: Text(
 						answer,
-						style: TextStyle(
+						style: const TextStyle(
 							fontSize: 30,
 							color: Colors.black,
 							fontWeight: FontWeight.bold),
@@ -86,11 +90,12 @@ Widget build(BuildContext context) {
 			),
 		),
 		Expanded(
+      // button setting
 			flex: 3,
 			child: Container(
 			child: GridView.builder(
 				itemCount: buttons.length,
-				gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+				gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
 					crossAxisCount: 4),
 				itemBuilder: (BuildContext context, int index) {
 					// Clear Button
@@ -134,8 +139,7 @@ Widget build(BuildContext context) {
 					return MyButton(
 						buttontapped: () {
 						setState(() {
-							userInput =
-								userInput.substring(0, userInput.length - 1);
+							userInput = userInput.substring(0, userInput.length - 1);
 						});
 						},
 						buttonText: buttons[index],
@@ -144,7 +148,7 @@ Widget build(BuildContext context) {
 					);
 					}
 					// Equal_to Button
-					else if (index == 18) {
+					else if (index == 22) {
 					return MyButton(
 						buttontapped: () {
 						setState(() {
@@ -152,22 +156,72 @@ Widget build(BuildContext context) {
 						});
 						},
 						buttonText: buttons[index],
-						color: Colors.orange[700],
-						textColor: Colors.white,
+						color: Colors.white,
+						textColor: Colors.black,
 					);
 					}
-
-					// other buttons
+          // cosin button, to use this check if next input is a valid integer and replace inside of string with integer ex. cos()x -> cos(x)
+          else if(index == 4){
+          String i =buttons[index];
+          return MyButton(buttontapped: (){
+            setState((){
+            String k= buttons[index].replaceAll('cos', 'cos()');
+            userInput += k;
+            });
+          },
+          buttonText: i);
+          }
+          // sin button
+          else if(index == 5){
+          String i =buttons[index];
+          return MyButton(buttontapped: (){
+            setState((){
+            String k= buttons[index].replaceAll('sin', 'sin()');
+            userInput += k;
+            });
+          },
+          buttonText: i);
+          }
+          // tan button
+          else if(index == 6){
+          String i =buttons[index];
+          return MyButton(buttontapped: (){
+            setState((){
+            String k= buttons[index].replaceAll('tan', 'tan()');
+            userInput += k;
+            });
+          },
+          buttonText: i);
+          }
+          // log button
+          else if(index == 7){
+          String i =buttons[index];
+          return MyButton(buttontapped: (){
+            setState((){
+            String k= buttons[index].replaceAll('log', 'log()');
+            userInput += k;
+            });
+          },
+          buttonText: i);
+          }
+					// other buttons, numbers
 					else {
 					return MyButton(
 						buttontapped: () {
 						setState(() {
-							userInput += buttons[index];
+              if(userInput.startsWith('cos')==true){
+                // fix the below, this will only work for whole numbers
+                userInput = 'cos($buttons[index])';
+              }
+              else{
+              userInput += buttons[index];
+              }
+						
 						});
 						},
 						buttonText: buttons[index],
 						color: isOperator(buttons[index])
-							? Colors.blueAccent
+							? Colors.orangeAccent
 							: Colors.white,
 						textColor: isOperator(buttons[index])
 							? Colors.white
@@ -183,7 +237,7 @@ Widget build(BuildContext context) {
 }
 
 bool isOperator(String x) {
-	if (x == '/' || x == 'x' || x == '-' || x == '+' || x == '=') {
+	if (x == '/' || x == 'x' || x == '-' || x == '+' || x == '=' || x == 'Cos' || x == 'Sin' || x == 'Tan' || x == 'Log') {
 	return true;
 	}
 	return false;

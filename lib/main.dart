@@ -112,7 +112,6 @@ Widget build(BuildContext context) {
 						textColor: Colors.black,
 					);
 					}
-
 					// +/- button
 					else if (index == 1) {
 					return MyButton(
@@ -210,8 +209,17 @@ Widget build(BuildContext context) {
 						buttontapped: () {
 						setState(() {
               if(userInput.startsWith('cos')==true){
-                // fix the below, this will only work for whole numbers
-                userInput = 'cos($buttons[index])';
+                // DEBUG HERE AND FIX BELOW, THIS WILL ONLY WORK FOR ONE NUMBER INPUT AT A TIME
+                userInput = 'cos(${buttons[index]})';
+              }
+              else if(userInput.startsWith('sin')==true){
+                userInput = 'sin(${buttons[index]})';
+              }
+              else if(userInput.startsWith('tan')==true){
+                userInput = 'tan(${buttons[index]})';
+              }
+              else if (userInput.startsWith('log')==true){
+                userInput = 'log(${buttons[index]})';
               }
               else{
               userInput += buttons[index];

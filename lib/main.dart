@@ -52,16 +52,13 @@ final List<String> buttons = [
 	'.',
 	'=',
 	'+',
-  '𝝅',
-  '√',
- 
 ];
 
 @override
 Widget build(BuildContext context) {
 	return Scaffold(
-	appBar: new AppBar(
-	title:  new Text("Calculator"),
+	appBar:  AppBar(
+	title:  const Text("Calculator"),
 	), //AppBar
 	backgroundColor: Colors.white,
 	body: Column(

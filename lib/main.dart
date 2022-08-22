@@ -117,12 +117,15 @@ Widget build(BuildContext context) {
 						textColor: Colors.black,
 					);
 					}
+          // numbers
+          
 					// +/- button
 					else if (index == 1) {
 					return MyButton(
             buttontapped: (){
+              // use numtext or userInput variable here?
             setState(() {
-              userInput='-';
+              userInput+='-';
             });
             },
 						buttonText: buttons[index],
@@ -168,7 +171,7 @@ Widget build(BuildContext context) {
 						});
 						},
 						buttonText: buttons[index],
-						color: Colors.white,
+						color: Colors.grey,
 						textColor: Colors.black,
 					);
 					}
@@ -216,7 +219,6 @@ Widget build(BuildContext context) {
 					else {
 					return MyButton(
 						buttontapped: () {
-              // find way to refresh i 
 						setState(() {
               numtext+=buttons[index];
               if(userInput.startsWith('cos')==true){
@@ -239,10 +241,15 @@ Widget build(BuildContext context) {
 						buttonText: buttons[index],
 						color: isOperator(buttons[index])
 							? Colors.orangeAccent
-							: Colors.white,
+							:  isNumber(buttons[index])
+              ? Colors.grey
+              : Colors.black,
 						textColor: isOperator(buttons[index])
 							? Colors.white
-							: Colors.black,
+							: isNumber(buttons[index])
+              ? Colors.black
+              : Colors.white,
+            
 					);
 					}
 				}), // GridView.builder
@@ -254,17 +261,24 @@ Widget build(BuildContext context) {
 }
 
 bool isOperator(String x) {
-	if (x == '/' || x == 'x' || x == '-' || x == '+' || x == '=' || x == 'cos' || x == 'sin' || x == 'tan' || x == 'log') {
+	if (x == '/' || x == 'x' || x == '-' || x == '+' || x == '=' || x == 'cos' || x == 'sin' || x == 'tan' || x == 'log'|| x=='=') {
 	return true;
 	}
 	return false;
+}
+bool isNumber(String x){
+ for(int i=0;i<=9;i++){
+  if(x[0]==i.toString()||x[0]=='.'){
+    return true;
+  }
+ }
+ return false;
 }
 
 // function to calculate the input operation, ran when equal is pressed
 void equalPressed() {
 	String finaluserinput = userInput;
 	finaluserinput = userInput.replaceAll('x', '*');
-  finaluserinput =userInput.replaceAll('𝝅', "pi");
 	Parser p = Parser();
 	Expression exp = p.parse(finaluserinput);
 	ContextModel cm = ContextModel();

@@ -1,4 +1,4 @@
-import 'dart:math' ;
+
 import 'package:flutter/material.dart';
 import 'buttons.dart';
 import 'package:math_expressions/math_expressions.dart';
@@ -241,11 +241,13 @@ Widget build(BuildContext context) {
 						buttonText: buttons[index],
 						color: isOperator(buttons[index])
 							? Colors.orangeAccent
+              // not an operator(orange if so). For button color, is it a number?
 							:  isNumber(buttons[index])
               ? Colors.grey
               : Colors.black,
 						textColor: isOperator(buttons[index])
 							? Colors.white
+              // not an operator(black text if so). for text color, is it a number?
 							: isNumber(buttons[index])
               ? Colors.black
               : Colors.white,

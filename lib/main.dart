@@ -107,6 +107,7 @@ Widget build(BuildContext context) {
 					return MyButton(
 						buttontapped: () {
 						setState(() {
+              numtext = '';
 							userInput = '';
 							answer = '0';
 						});
@@ -148,6 +149,9 @@ Widget build(BuildContext context) {
 						buttontapped: () {
 						setState(() {
 							userInput = userInput.substring(0, userInput.length - 1);
+              if(userInput.isEmpty){
+                numtext = '';
+              }
 						});
 						},
 						buttonText: buttons[index],

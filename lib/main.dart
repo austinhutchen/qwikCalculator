@@ -1,3 +1,4 @@
+import 'dart:math' ;
 import 'package:flutter/material.dart';
 import 'buttons.dart';
 import 'package:math_expressions/math_expressions.dart';
@@ -24,7 +25,7 @@ _HomePageState createState() => _HomePageState();
 class _HomePageState extends State<HomePage> {
 var userInput = '';
 var answer = '';
-
+ String numtext = '';
 // Array of button
 final List<String> buttons = [
 	'AC',
@@ -51,6 +52,9 @@ final List<String> buttons = [
 	'.',
 	'=',
 	'+',
+  '𝝅',
+  '√',
+ 
 ];
 
 @override
@@ -115,6 +119,11 @@ Widget build(BuildContext context) {
 					// +/- button
 					else if (index == 1) {
 					return MyButton(
+            buttontapped: (){
+            setState(() {
+              userInput='-';
+            });
+            },
 						buttonText: buttons[index],
 						color: Colors.blue[50],
 						textColor: Colors.black,
@@ -161,70 +170,66 @@ Widget build(BuildContext context) {
 					}
           // cosin button, to use this check if next input is a valid integer and replace inside of string with integer ex. cos()x -> cos(x)
           else if(index == 4){
-          String i =buttons[index];
           return MyButton(buttontapped: (){
             setState((){
             String k= buttons[index].replaceAll('cos', 'cos()');
             userInput += k;
             });
           },
-          buttonText: i);
+          buttonText: buttons[index]);
           }
           // sin button
           else if(index == 5){
-          String i =buttons[index];
           return MyButton(buttontapped: (){
             setState((){
             String k= buttons[index].replaceAll('sin', 'sin()');
             userInput += k;
             });
           },
-          buttonText: i);
+          buttonText: buttons[index]);
           }
           // tan button
           else if(index == 6){
-          String i =buttons[index];
           return MyButton(buttontapped: (){
             setState((){
             String k= buttons[index].replaceAll('tan', 'tan()');
             userInput += k;
             });
           },
-          buttonText: i);
+          buttonText: buttons[index]);
           }
           // log button
           else if(index == 7){
-          String i =buttons[index];
           return MyButton(buttontapped: (){
             setState((){
             String k= buttons[index].replaceAll('log', 'log()');
             userInput += k;
             });
           },
-          buttonText: i);
+          buttonText: buttons[index]);
           }
-					// other buttons, numbers
+					// other buttons, numbers, square root, extra functions
 					else {
 					return MyButton(
 						buttontapped: () {
+              // find way to refresh i 
 						setState(() {
+              numtext+=buttons[index];
               if(userInput.startsWith('cos')==true){
-                // DEBUG HERE AND FIX BELOW, THIS WILL ONLY WORK FOR ONE NUMBER INPUT AT A TIME
-                userInput = 'cos(${buttons[index]})';
+              userInput = 'cos($numtext)';
               }
               else if(userInput.startsWith('sin')==true){
-                userInput = 'sin(${buttons[index]})';
+                userInput = 'sin($numtext)';
               }
               else if(userInput.startsWith('tan')==true){
-                userInput = 'tan(${buttons[index]})';
+                userInput = 'tan($numtext)';
               }
               else if (userInput.startsWith('log')==true){
-                userInput = 'log(${buttons[index]})';
+                userInput = 'log($numtext)';
               }
               else{
               userInput += buttons[index];
               }
-						
 						});
 						},
 						buttonText: buttons[index],
@@ -245,21 +250,23 @@ Widget build(BuildContext context) {
 }
 
 bool isOperator(String x) {
-	if (x == '/' || x == 'x' || x == '-' || x == '+' || x == '=' || x == 'Cos' || x == 'Sin' || x == 'Tan' || x == 'Log') {
+	if (x == '/' || x == 'x' || x == '-' || x == '+' || x == '=' || x == 'cos' || x == 'sin' || x == 'tan' || x == 'log') {
 	return true;
 	}
 	return false;
 }
 
-// function to calculate the input operation
+// function to calculate the input operation, ran when equal is pressed
 void equalPressed() {
 	String finaluserinput = userInput;
 	finaluserinput = userInput.replaceAll('x', '*');
-
+  finaluserinput =userInput.replaceAll('𝝅', "pi");
 	Parser p = Parser();
 	Expression exp = p.parse(finaluserinput);
 	ContextModel cm = ContextModel();
 	double eval = exp.evaluate(EvaluationType.REAL, cm);
 	answer = eval.toString();
+  // refresh the number text variable, so that it can be used again later
+  numtext = '';
 }
 }

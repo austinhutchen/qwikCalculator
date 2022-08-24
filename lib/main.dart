@@ -20,6 +20,32 @@ class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
+// use this to find square root
+  double mySqrt(double x,int precision) {
+    // find a way to include decimals in binary search, and convert to integer
+    // after. This only works for whole numbers
+    double first = 0;
+    double last = x;
+    double mid;
+    double ans=0;
+    while (first <= last) {
+      mid = (first + last) / 2.0;
+      double sq = mid*mid;
+      if (sq == x) {
+        return mid;
+      }
+      // if decimals were to be included, the below would be a function call for secondary binary search through the decimals, instead of mid being assigned to ans
+      if (sq < x) {
+      ans=mid;
+        first = mid + 1;
+      } 
+      else if (sq > x) {
+        last = mid - 1;
+      }
+    }
+   
+    return ans;
+  }
 
 class _HomePageState extends State<HomePage> {
   var userInput = '';
@@ -56,10 +82,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Calculator"),
-      ), //AppBar
-      backgroundColor: Colors.white,
+    
+      backgroundColor: Colors.black,
       body: Column(
         children: <Widget>[
           Expanded(
@@ -73,7 +97,7 @@ class _HomePageState extends State<HomePage> {
                       child: Text(
                         userInput,
                         style:
-                            const TextStyle(fontSize: 23, color: Colors.black),
+                            const TextStyle(fontSize: 23, color: Colors.white),
                       ),
                     ),
                     Container(
@@ -83,7 +107,7 @@ class _HomePageState extends State<HomePage> {
                         answer,
                         style: const TextStyle(
                             fontSize: 30,
-                            color: Colors.black,
+                            color: Colors.white,
                             fontWeight: FontWeight.bold),
                       ),
                     )
@@ -114,8 +138,7 @@ class _HomePageState extends State<HomePage> {
                         textColor: Colors.black,
                       );
                     }
-                    // numbers
-
+                    
                     // +/- button
                     else if (index == 1) {
                       return MyButton(
@@ -183,7 +206,9 @@ class _HomePageState extends State<HomePage> {
                               userInput += k;
                             });
                           },
+                          color:Colors.blue[50],
                           buttonText: buttons[index]);
+                          
                     }
                     // sin button
                     else if (index == 5) {
@@ -195,6 +220,7 @@ class _HomePageState extends State<HomePage> {
                               userInput += k;
                             });
                           },
+                          color:Colors.blue[50],
                           buttonText: buttons[index]);
                     }
                     // tan button
@@ -207,6 +233,7 @@ class _HomePageState extends State<HomePage> {
                               userInput += k;
                             });
                           },
+                          color:Colors.blue[50],
                           buttonText: buttons[index]);
                     }
                     // log button
@@ -219,7 +246,9 @@ class _HomePageState extends State<HomePage> {
                               userInput += k;
                             });
                           },
+                          color:Colors.orangeAccent,
                           buttonText: buttons[index]);
+                          
                     }
                     // other buttons, numbers, square root, extra functions
                     else {
@@ -274,7 +303,8 @@ class _HomePageState extends State<HomePage> {
         x == 'cos' ||
         x == 'sin' ||
         x == 'tan' ||
-        x == 'log') 
+        x == 'log'||
+        x == '²') 
     {
       return true;
     }

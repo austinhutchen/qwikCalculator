@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'buttons.dart';
 import 'package:math_expressions/math_expressions.dart';
@@ -21,7 +23,7 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 // use this to find square root
-  double mySqrt(double x,int precision) {
+  double mySqrt(double x) {
     // find a way to include decimals in binary search, and convert to integer
     // after. This only works for whole numbers
     double first = 0;
@@ -42,15 +44,15 @@ class HomePage extends StatefulWidget {
       else if (sq > x) {
         last = mid - 1;
       }
-    }
-   
-    return ans;
+    }    return ans;
   }
 
 class _HomePageState extends State<HomePage> {
   var userInput = '';
   var answer = '';
   String numtext = '';
+  String i='';
+  double k=0;
 // Array of button
   final List<String> buttons = [
     'AC',
@@ -60,7 +62,7 @@ class _HomePageState extends State<HomePage> {
     'cos',
     'sin',
     'tan',
-    '²',
+    '!',
     '7',
     '8',
     '9',
@@ -116,7 +118,7 @@ class _HomePageState extends State<HomePage> {
           ),
           Expanded(
             // button setting
-            flex: 3,
+            flex: 4,
             child: Container(
               child: GridView.builder(
                   itemCount: buttons.length,
@@ -264,9 +266,12 @@ class _HomePageState extends State<HomePage> {
                               userInput = 'tan($numtext)';
                             } else if (userInput.startsWith('log') == true) {
                               userInput = 'log($numtext)';
-                            } else if (userInput.contains('²') == true) {
-                              userInput = '$numtext²';
-                            } else {
+                            } 
+                            else if(userInput.startsWith('poly')==true){
+                            // polynomial evaluator for symbols like x, y, etc
+
+                            }
+                            else {
                               userInput += buttons[index];
                             }
                           });
@@ -280,7 +285,7 @@ class _HomePageState extends State<HomePage> {
                                 : Colors.black,
                         textColor: isOperator(buttons[index])
                             ? Colors.white
-                            // not an operator(black text if so). for text color, is it a number?
+                            // not an operator(white text if so). for text color, is it a number?
                             : isNumber(buttons[index])
                                 ? Colors.black
                                 : Colors.white,
@@ -304,7 +309,7 @@ class _HomePageState extends State<HomePage> {
         x == 'sin' ||
         x == 'tan' ||
         x == 'log'||
-        x == '²') 
+        x == '!') 
     {
       return true;
     }
@@ -322,10 +327,14 @@ class _HomePageState extends State<HomePage> {
     return false;
   }
 
+  int mySquare(int x){
+    return x*x;
+  }
 // function to calculate the input operation, ran when equal is pressed
   void equalPressed() {
     String finaluserinput = userInput;
-
+    // find a way to output the square of numtext input here
+    // number is being multiplied by 10 for some reason, instead of squared
     Parser p = Parser();
     Expression exp = p.parse(finaluserinput);
     ContextModel cm = ContextModel();

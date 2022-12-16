@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
     '7',
     '8',
     '9',
-    '/',
+    '÷',
     '4',
     '5',
     '6',
@@ -265,7 +265,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   bool isOperator(String x) {
-    if (x == '/' ||
+    if (x == '÷' ||
         x == '*' ||
         x == '-' ||
         x == '²' ||
@@ -295,8 +295,11 @@ class _HomePageState extends State<HomePage> {
 
 // function to calculate the output operation, ran when equal is pressed
   void equalPressed() {
-    if(userInput.endsWith('²')== true){
+    if(userInput.endsWith('²')){
     userInput='${numtext}*${numtext}';
+    }
+    if(userInput.contains('÷')){
+      userInput=userInput.replaceAll(RegExp('[÷]'), '/');
     }
     // context model for dynamic screen overflow protection
     ContextModel cm = ContextModel();

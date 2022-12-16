@@ -295,7 +295,7 @@ class _HomePageState extends State<HomePage> {
 
 // function to calculate the output operation, ran when equal is pressed
   void equalPressed() {
-     if(userInput.endsWith('²')== true){
+    if(userInput.endsWith('²')== true){
     userInput='${numtext}*${numtext}';
     }
     // context model for dynamic screen overflow protection

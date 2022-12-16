@@ -23,8 +23,9 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 // class with helper functions for graphing and more
-var func = Helper();
-
+var help = Helper();
+Parser p = Parser();
+// parser for parsing expressions
 class _HomePageState extends State<HomePage> {
   var userInput = '';
   var answer = '';
@@ -35,8 +36,8 @@ class _HomePageState extends State<HomePage> {
   final List<String> buttons = [
     'AC',
     '+/-',
-    '²',
     'DEL',
+    '²',
     'cos',
     'sin',
     'tan',
@@ -133,7 +134,7 @@ class _HomePageState extends State<HomePage> {
                       );
                     }
                     // % Button
-                    else if (index == 2) {
+                    else if (index == 1) {
                       return MyButton(
                         buttontapped: () {
                           setState(() {
@@ -146,7 +147,7 @@ class _HomePageState extends State<HomePage> {
                       );
                     }
                     // Delete Button
-                    else if (index == 3) {
+                    else if (index == 2) {
                       return MyButton(
                         buttontapped: () {
                           setState(() {
@@ -193,8 +194,7 @@ class _HomePageState extends State<HomePage> {
                       return MyButton(
                           buttontapped: () {
                             setState(() {
-                              String k =
-                                  buttons[index].replaceAll('sin', 'sin()');
+                              String k =buttons[index].replaceAll('sin', 'sin()');
                               userInput += k;
                             });
                           },
@@ -214,25 +214,14 @@ class _HomePageState extends State<HomePage> {
                           color: Colors.blue[50],
                           buttonText: buttons[index]);
                     }
-                    // log button
-                    else if (index == 7) {
-                      return MyButton(
-                          buttontapped: () {
-                            setState(() {
-                              String k =
-                                  buttons[index].replaceAll('log', 'log()');
-                              userInput += k;
-                            });
-                          },
-                          color: Colors.orangeAccent,
-                          buttonText: buttons[index]);
-                    }
                     // other buttons, numbers, square root, extra functions
                     else {
                       return MyButton(
                         buttontapped: () {
                           setState(() {
+                            if(buttons[index]!='²'){
                             numtext += buttons[index];
+                            }
                             if (userInput.startsWith('cos') == true) {
                               userInput = 'cos($numtext)';
                             } else if (userInput.startsWith('sin') == true) {
@@ -246,7 +235,7 @@ class _HomePageState extends State<HomePage> {
                               // polynomial evaluator for symbols like x, y, etc
                             userInput = 'poly($numtext)';
                             // finds roots of polynomial with formula of numtext, gives them to userInput
-                            userInput=solve(numtext).toString();
+                            userInput=help.solve(numtext).toString();
                             } else {
                               userInput += buttons[index];
                             }
@@ -279,6 +268,7 @@ class _HomePageState extends State<HomePage> {
     if (x == '/' ||
         x == '*' ||
         x == '-' ||
+        x == '²' ||
         x == '+' ||
         x == '=' ||
         x == 'cos' ||
@@ -301,21 +291,16 @@ class _HomePageState extends State<HomePage> {
     return false;
   }
 
-  int mySquare(int x) {
-    return x * x;
-  }
+
 
 // function to calculate the output operation, ran when equal is pressed
   void equalPressed() {
-    if(userInput.endsWith('²')== true){
+     if(userInput.endsWith('²')== true){
     userInput='${numtext}*${numtext}';
     }
-    String finaluserinput = userInput;
-    // find a way to output the square of numtext input here
-    // number is being multiplied by 10 for some reason, instead of squared
-    Parser p = Parser();
-    Expression exp = p.parse(finaluserinput);
+    // context model for dynamic screen overflow protection
     ContextModel cm = ContextModel();
+    Expression exp = p.parse(userInput);
     double eval = exp.evaluate(EvaluationType.REAL, cm);
     answer = eval.toString();
     // refresh the number text variable, so that it can be used again later

@@ -1,11 +1,11 @@
 import 'dart:math';
-
+// class used for more complex operations not supported by the dart library
 class Helper {
   Helper();
-  int mysquare() {
-    return 0;
-  }
 
+int mySquare(int x) {
+    return x * x;
+  }
 // use this to find square root
   double mySqrt(double x) {
     // find a way to include decimals in binary search, and convert to integer

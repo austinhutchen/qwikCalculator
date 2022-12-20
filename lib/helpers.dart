@@ -6,17 +6,26 @@ class Helper {
 int mySquare(int x) {
     return x * x;
   }
+  bool validsign(int x){
+    if(x>=0){
+      return true;
+    }
+    return false;
+  }
 // use this to find square root
-  double mySqrt(double x) {
+  int mySqrt(int x) {
+    if(!validsign(x)){
+    return 0x0;
+    }
     // find a way to include decimals in binary search, and convert to integer
     // after. This only works for whole numbers
-    double first = 0;
-    double last = x;
-    double mid;
-    double ans = 0;
+    int first = 0;
+    int last = x;
+    int mid;
+    int ans = 0;
     while (first <= last) {
-      mid = (first + last) / 2.0;
-      double sq = mid * mid;
+      mid = ((first + last) ~/ 2.0);
+      int sq = mid * mid;
       if (sq == x) {
         return mid;
       }
@@ -49,7 +58,11 @@ int mySquare(int x) {
     }
     return 0x0;
   }
-
+// symbols
+//π
+//ⁿ
+//√
+//
   int parsehelper(String polynomial) {
 // find dart library for parsing these strings
 

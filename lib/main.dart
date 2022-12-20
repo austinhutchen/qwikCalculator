@@ -24,8 +24,8 @@ class HomePage extends StatefulWidget {
 }
 // class with helper functions for graphing and more
 var help = Helper();
+// parser for parsing string expressions
 Parser p = Parser();
-// parser for parsing expressions
 class _HomePageState extends State<HomePage> {
   var userInput = '';
   var answer = '';
@@ -294,15 +294,37 @@ class _HomePageState extends State<HomePage> {
 
 
 // function to calculate the output operation, ran when equal is pressed
+// experiment with moving some of this code up before equal is pressed?
+// into respective parts of the functions above 
   void equalPressed() {
+    // this needs to be fixed for larger operations with more than one square, such as cos(5^2)
     if(userInput.endsWith('²')){
-    userInput='${numtext}*${numtext}';
+    int ind=userInput.indexOf('²');
+    userInput=userInput.replaceAll(RegExp('[²]'), '');
+    userInput=userInput.replaceRange(ind-numtext.length, ind, '$numtext*$numtext');
+    // trim numbers with more than two digits here 
     }
+
     if(userInput.contains('÷')){
+      userInput.trim();
       userInput=userInput.replaceAll(RegExp('[÷]'), '/');
     }
+
+    if(userInput.contains('√')){
+      // removes whitespaces
+      userInput.trim();
+      // takes index of sqrt and replaces with square root function of next index number
+      int ind=userInput.indexOf('√');
+      // finds nearest whole square root of input
+      String newstr =(help.mySqrt(int.parse(userInput[ind+1]))).toString();
+      userInput=userInput.replaceAll(RegExp('√'), '');
+      // how do i access array in dart
+      userInput=userInput.replaceRange(ind+1, ind+2, newstr);
+    }
+
     // context model for dynamic screen overflow protection
     ContextModel cm = ContextModel();
+    // parser to parse string expressions into numerical value
     Expression exp = p.parse(userInput);
     double eval = exp.evaluate(EvaluationType.REAL, cm);
     answer = eval.toString();

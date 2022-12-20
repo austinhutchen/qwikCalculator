@@ -302,7 +302,6 @@ class _HomePageState extends State<HomePage> {
     int ind=userInput.indexOf('²');
     userInput=userInput.replaceAll(RegExp('[²]'), '');
     userInput=userInput.replaceRange(ind-numtext.length, ind, '$numtext*$numtext');
-    // trim numbers with more than two digits here 
     }
 
     if(userInput.contains('÷')){

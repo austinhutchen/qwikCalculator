@@ -60,6 +60,15 @@ class _HomePageState extends State<HomePage> {
     '=',
     '+',
   ];
+ final List <String> alt =[
+    'AC',
+    '+/-',
+    'DEL',
+    '²',
+    'arccos',
+    'arcsin',
+    'arctan',
+ ];
 
   @override
   Widget build(BuildContext context) {

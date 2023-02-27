@@ -1,4 +1,3 @@
-
 import 'helpers.dart';
 import 'package:flutter/material.dart';
 import 'buttons.dart';
@@ -22,10 +21,12 @@ class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
+
 // class with helper functions for graphing and more
 var help = Helper();
 // parser for parsing string expressions
 Parser p = Parser();
+
 class _HomePageState extends State<HomePage> {
   var userInput = '';
   var answer = '';
@@ -194,7 +195,8 @@ class _HomePageState extends State<HomePage> {
                       return MyButton(
                           buttontapped: () {
                             setState(() {
-                              String k =buttons[index].replaceAll('sin', 'sin()');
+                              String k =
+                                  buttons[index].replaceAll('sin', 'sin()');
                               userInput += k;
                             });
                           },
@@ -219,8 +221,8 @@ class _HomePageState extends State<HomePage> {
                       return MyButton(
                         buttontapped: () {
                           setState(() {
-                            if(buttons[index]!='²'){
-                            numtext += buttons[index];
+                            if (buttons[index] != '²') {
+                              numtext += buttons[index];
                             }
                             if (userInput.startsWith('cos') == true) {
                               userInput = 'cos($numtext)';
@@ -230,12 +232,11 @@ class _HomePageState extends State<HomePage> {
                               userInput = 'tan($numtext)';
                             } else if (userInput.startsWith('log') == true) {
                               userInput = 'log($numtext)';
-                            } 
-                            else if (userInput.startsWith('poly') == true) {
+                            } else if (userInput.startsWith('poly') == true) {
                               // polynomial evaluator for symbols like x, y, etc
-                            userInput = 'poly($numtext)';
-                            // finds roots of polynomial with formula of numtext, gives them to userInput
-                            userInput=help.solve(numtext).toString();
+                              userInput = 'poly($numtext)';
+                              // finds roots of polynomial with formula of numtext, gives them to userInput
+                              userInput = help.solve(numtext).toString();
                             } else {
                               userInput += buttons[index];
                             }
@@ -291,33 +292,32 @@ class _HomePageState extends State<HomePage> {
     return false;
   }
 
-
-
 // function to calculate the output operation, ran when equal is pressed
 // experiment with moving some of this code up before equal is pressed?
-// into respective parts of the functions above 
+// into respective parts of the functions above
   void equalPressed() {
     // this needs to be fixed for larger operations with more than one square, such as cos(5^2)
-    if(userInput.endsWith('²')){
-    int ind=userInput.indexOf('²');
-    userInput=userInput.replaceAll(RegExp('[²]'), '');
-    userInput=userInput.replaceRange(ind-numtext.length, ind, '$numtext*$numtext');
+    if (userInput.endsWith('²')) {
+      int ind = userInput.indexOf('²');
+      userInput = userInput.replaceAll(RegExp('[²]'), '');
+      userInput = userInput.replaceRange(
+          ind - numtext.length, ind, '$numtext*$numtext');
     }
 
-    if(userInput.contains('÷')){
+    if (userInput.contains('÷')) {
       userInput.trim();
-      userInput=userInput.replaceAll(RegExp('[÷]'), '/');
+      userInput = userInput.replaceAll(RegExp('[÷]'), '/');
     }
 
-    if(userInput.contains('√')){
+    if (userInput.contains('√')) {
       // removes whitespaces
       userInput.trim();
       // takes index of sqrt and replaces with square root function of next index number
-      int ind=userInput.indexOf('√');
+      int ind = userInput.indexOf('√');
       // finds nearest whole square root of input
-      String newstr =(help.mySqrt(int.parse(userInput[ind+1]))).toString();
-      userInput=userInput.replaceAll(RegExp('√'), '');
-      userInput=userInput.replaceRange(ind+1, ind+2, newstr);
+      String newstr = (help.mySqrt(int.parse(userInput[ind + 1]))).toString();
+      userInput = userInput.replaceAll(RegExp('√'), '');
+      userInput = userInput.replaceRange(ind + 1, ind + 2, newstr);
     }
 
     // context model for dynamic screen overflow protection

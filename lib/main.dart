@@ -317,7 +317,6 @@ class _HomePageState extends State<HomePage> {
       // finds nearest whole square root of input
       String newstr =(help.mySqrt(int.parse(userInput[ind+1]))).toString();
       userInput=userInput.replaceAll(RegExp('√'), '');
-      // how do i access array in dart
       userInput=userInput.replaceRange(ind+1, ind+2, newstr);
     }
 

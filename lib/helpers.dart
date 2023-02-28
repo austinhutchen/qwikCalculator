@@ -6,11 +6,12 @@ class Helper {
 int mySquare(int x) {
     return x * x;
   }
-  bool validsign(int x){
-    if(x>=0){
-      return true;
+  bool validsign( int x){
+    // assumes integer is signed
+    if(x>>31==1){
+      return false;
     }
-    return false;
+    return true;
   }
 // use this to find square root
   int mySqrt(int x) {

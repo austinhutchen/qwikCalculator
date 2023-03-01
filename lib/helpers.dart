@@ -27,32 +27,31 @@ class Helper {
     }
     return true;
   }
+
   // logarithm base 2 for MSb calculation
-double logBase(num x, num base) => log(x) / log(base);
-double log2(num x) => logBase(x, 2);
-int mySqrt(int N)
-{
+  double logBase(num x, num base) => log(x) / log(base);
+  double log2(num x) => logBase(x, 2);
+  int mySqrt(int N) {
     // Find MSB(Most significant Bit) of N
     int msb = (log2(N)).round();
- 
+
     // (a = 2^msb)
     int a = 1 << msb;
     int result = 0;
     while (a != 0) {
- 
-        // Check whether the current value
-        // of 'a' can be added or not
-        if ((result + a) * (result + a) <= N) {
-            result += a;
-        }
- 
-        // (a = a/2)
-        a >>= 1;
+      // Check whether the current value
+      // of 'a' can be added or not
+      if ((result + a) * (result + a) <= N) {
+        result += a;
+      }
+
+      // (a = a/2)
+      a >>= 1;
     }
- 
+
     // Return the result
     return result;
-}
+  }
 
 // symbols
 //π

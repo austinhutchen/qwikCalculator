@@ -245,8 +245,7 @@ class _HomePageState extends State<HomePage> {
                             } else if (userInput.startsWith('poly') == true) {
                               // polynomial evaluator for symbols like x, y, etc
                               userInput = 'poly($numtext)';
-                              // finds roots of polynomial with formula of numtext, gives them to userInput
-                              userInput = help.solve(numtext).toString();
+
                             } else {
                               userInput += buttons[index];
                             }

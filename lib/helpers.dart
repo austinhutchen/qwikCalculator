@@ -27,34 +27,32 @@ class Helper {
     }
     return true;
   }
-
-// use this to find square root
-  int mySqrt(int x) {
-    if (!validsign(x)) {
-      return 0x0;
+  // logarithm base 2 for MSb calculation
+double logBase(num x, num base) => log(x) / log(base);
+double log2(num x) => logBase(x, 2);
+int mySqrt(int N)
+{
+    // Find MSB(Most significant Bit) of N
+    int msb = (log2(N)).round();
+ 
+    // (a = 2^msb)
+    int a = 1 << msb;
+    int result = 0;
+    while (a != 0) {
+ 
+        // Check whether the current value
+        // of 'a' can be added or not
+        if ((result + a) * (result + a) <= N) {
+            result += a;
+        }
+ 
+        // (a = a/2)
+        a >>= 1;
     }
-    // find a way to include decimals in binary search, and convert to integer
-    // after. This only works for whole numbers
-    int first = 0;
-    int last = x;
-    int mid;
-    int ans = 0;
-    while (first <= last) {
-      mid = ((first + last) ~/ 2.0);
-      int sq = mid * mid;
-      if (sq == x) {
-        return mid;
-      }
-      // if decimals were to be included, the below would be a function call for secondary binary search through the decimals, instead of mid being assigned to ans
-      if (sq < x) {
-        ans = mid;
-        first = mid + 1;
-      } else if (sq > x) {
-        last = mid - 1;
-      }
-    }
-    return ans;
-  }
+ 
+    // Return the result
+    return result;
+}
 
   double solve(String formula) {
 // uses quadratic formula

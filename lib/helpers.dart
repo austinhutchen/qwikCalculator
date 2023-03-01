@@ -1,22 +1,37 @@
 import 'dart:math';
+
 // class used for more complex operations not supported by the dart library
 class Helper {
   Helper();
 
-int mySquare(int x) {
-    return x * x;
+  int mySquare(int n) {
+    int i = n;
+    int sq = 0;
+    int count = 0;
+
+    while (i > 0) {
+      if ((i & 1) == 1) {
+        sq += n << count;
+      }
+
+      i = i >> 1;
+      count++;
+    }
+
+    return sq;
   }
-  bool validsign( int x){
-    // assumes integer is signed
-    if(x>>31==1){
+
+  bool validsign(int x) {
+    if (x >> 31 == 1) {
       return false;
     }
     return true;
   }
+
 // use this to find square root
   int mySqrt(int x) {
-    if(!validsign(x)){
-    return 0x0;
+    if (!validsign(x)) {
+      return 0x0;
     }
     // find a way to include decimals in binary search, and convert to integer
     // after. This only works for whole numbers
@@ -59,6 +74,7 @@ int mySquare(int x) {
     }
     return 0x0;
   }
+
 // symbols
 //π
 //ⁿ

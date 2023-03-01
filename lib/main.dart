@@ -21,7 +21,7 @@ class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
-
+// use state and hooks to change between the lists below on push of a button
 // class with helper functions for graphing and more
 var help = Helper();
 // parser for parsing string expressions

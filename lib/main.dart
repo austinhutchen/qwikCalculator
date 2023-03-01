@@ -21,6 +21,7 @@ class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
+
 // use state and hooks to change between the lists below on push of a button
 // class with helper functions for graphing and more
 var help = Helper();
@@ -60,7 +61,7 @@ class _HomePageState extends State<HomePage> {
     '=',
     '+',
   ];
- final List <String> alt =[
+  final List<String> alt = [
     'AC',
     '+/-',
     'DEL',
@@ -68,7 +69,7 @@ class _HomePageState extends State<HomePage> {
     'arccos',
     'arcsin',
     'arctan',
- ];
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -309,8 +310,8 @@ class _HomePageState extends State<HomePage> {
     if (userInput.endsWith('²')) {
       int ind = userInput.indexOf('²');
       userInput = userInput.replaceAll(RegExp('[²]'), '');
-      userInput = userInput.replaceRange(
-          ind - numtext.length, ind, '$numtext*$numtext');
+      userInput = userInput.replaceRange(ind - numtext.length, ind,
+          help.mySquare(int.parse(numtext)).toString());
     }
 
     if (userInput.contains('÷')) {

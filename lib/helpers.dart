@@ -31,6 +31,7 @@ class Helper {
   // logarithm base 2 for MSb calculation
   double logBase(num x, num base) => log(x) / log(base);
   double log2(num x) => logBase(x, 2);
+// square root function bitwise
   int mySqrt(int N) {
     // Find MSB(Most significant Bit) of N
     int msb = (log2(N)).round();

@@ -13,7 +13,6 @@ class Helper {
       if ((i & 1) == 1) {
         sq += n << count;
       }
-
       i = i >> 1;
       count++;
     }
@@ -29,8 +28,9 @@ class Helper {
   }
 
   // logarithm base 2 for MSb calculation
-  double logBase(num x, num base) => log(x) / log(base);
   double log2(num x) => logBase(x, 2);
+  // log base 2 calc
+    double logBase(num x, num base) => log(x) / log(base);
 // square root function bitwise
   int mySqrt(int N) {
     // Find MSB(Most significant Bit) of N

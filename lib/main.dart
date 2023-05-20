@@ -39,8 +39,8 @@ class _HomePageState extends State<HomePage> {
   final List<String> buttons = [
     'AC',
     '+/-',
-    'ALT',
     'DEL',
+    'ALT',
     'cos',
     'sin',
     'tan',
@@ -147,7 +147,7 @@ class _HomePageState extends State<HomePage> {
                             textColor: Colors.black,
                           );
                         }
-                      case 3:
+                      case 2:
                         {
                           // DELETE
                           return MyButton(
@@ -251,13 +251,13 @@ class _HomePageState extends State<HomePage> {
                                 // not an operator(orange if so). For button color, is it a number?
                                 : help.isNumber(buttons[index])
                                     ? Colors.blueGrey
-                                    : Colors.black,
+                                    : Colors.white,
                             textColor: help.isOperator(buttons[index])
                                 ? Colors.white
                                 // not an operator(white text if so). for text color, is it a number?
                                 : help.isNumber(buttons[index])
                                     ? Colors.black
-                                    : Colors.white,
+                                    : Colors.black,
                           );
                         }
                     }

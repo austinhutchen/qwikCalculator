@@ -20,6 +20,33 @@ class Helper {
     return sq;
   }
 
+  bool isOperator(String x) {
+    if (x == '÷' ||
+        x == '*' ||
+        x == '-' ||
+        x == '²' ||
+        x == '+' ||
+        x == '=' ||
+        x == 'alt' ||
+        x == 'cos' ||
+        x == 'sin' ||
+        x == 'tan' ||
+        x == 'log' ||
+        x == '!') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  bool isNumber(String x) {
+    for (int i = 0; i <= 9; i++) {
+      if (x[0] == i.toString() || x[0] == '.') {
+        return true;
+      }
+    }
+    return false;
+  }
   bool validsign(int x) {
     if (x >> 31 == 1) {
       return false;

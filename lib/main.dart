@@ -9,6 +9,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   @override
+  final help = new Helper();
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -38,8 +39,8 @@ class _HomePageState extends State<HomePage> {
   final List<String> buttons = [
     'AC',
     '+/-',
+    'ALT',
     'DEL',
-    '²',
     'cos',
     'sin',
     'tan',
@@ -61,11 +62,12 @@ class _HomePageState extends State<HomePage> {
     '=',
     '+',
   ];
+
   final List<String> alt = [
     'AC',
     '+/-',
     'DEL',
-    '²',
+    '',
     'arccos',
     'arcsin',
     'arctan',
@@ -115,156 +117,149 @@ class _HomePageState extends State<HomePage> {
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 4),
                   itemBuilder: (BuildContext context, int index) {
-                    // Clear Button
-                    if (index == 0) {
-                      return MyButton(
-                        buttontapped: () {
-                          setState(() {
-                            numtext = '';
-                            userInput = '';
-                            answer = '0';
-                          });
-                        },
-                        buttonText: buttons[index],
-                        color: Colors.blue[50],
-                        textColor: Colors.black,
-                      );
-                    }
-                    // +/- button
-                    else if (index == 1) {
-                      return MyButton(
-                        buttontapped: () {
-                          // use numtext or userInput variable here?
-                          setState(() {
-                            userInput += '-';
-                          });
-                        },
-                        buttonText: buttons[index],
-                        color: Colors.blue[50],
-                        textColor: Colors.black,
-                      );
-                    }
-                    // % Button
-                    else if (index == 1) {
-                      return MyButton(
-                        buttontapped: () {
-                          setState(() {
-                            userInput += buttons[index];
-                          });
-                        },
-                        buttonText: buttons[index],
-                        color: Colors.blue[50],
-                        textColor: Colors.black,
-                      );
-                    }
-                    // Delete Button
-                    else if (index == 2) {
-                      return MyButton(
-                        buttontapped: () {
-                          setState(() {
-                            userInput =
-                                userInput.substring(0, userInput.length - 1);
-                            if (userInput.isEmpty) {
-                              numtext = '';
-                            }
-                          });
-                        },
-                        buttonText: buttons[index],
-                        color: Colors.blue[50],
-                        textColor: Colors.black,
-                      );
-                    }
-                    // Equal_to Button
-                    else if (index == 22) {
-                      return MyButton(
-                        buttontapped: () {
-                          setState(() {
-                            equalPressed();
-                          });
-                        },
-                        buttonText: buttons[index],
-                        color: Colors.blueGrey,
-                        textColor: Colors.black,
-                      );
-                    }
-                    // cosin button, to use this check if next input is a valid integer and replace inside of string with integer ex. cos()x -> cos(x)
-                    else if (index == 4) {
-                      return MyButton(
-                          buttontapped: () {
-                            setState(() {
-                              String k =
-                                  buttons[index].replaceAll('cos', 'cos()');
-                              userInput += k;
-                            });
-                          },
-                          color: Colors.blue[50],
-                          buttonText: buttons[index]);
-                    }
-                    // sin button
-                    else if (index == 5) {
-                      return MyButton(
-                          buttontapped: () {
-                            setState(() {
-                              String k =
-                                  buttons[index].replaceAll('sin', 'sin()');
-                              userInput += k;
-                            });
-                          },
-                          color: Colors.blue[50],
-                          buttonText: buttons[index]);
-                    }
-                    // tan button
-                    else if (index == 6) {
-                      return MyButton(
-                          buttontapped: () {
-                            setState(() {
-                              String k =
-                                  buttons[index].replaceAll('tan', 'tan()');
-                              userInput += k;
-                            });
-                          },
-                          color: Colors.blue[50],
-                          buttonText: buttons[index]);
-                    }
-                    // other buttons, numbers, square root, extra functions
-                    else {
-                      return MyButton(
-                        buttontapped: () {
-                          setState(() {
-                            if (buttons[index] != '²') {
-                              numtext += buttons[index];
-                            }
-                            if (userInput.startsWith('cos') == true) {
-                              userInput = 'cos($numtext)';
-                            } else if (userInput.startsWith('sin') == true) {
-                              userInput = 'sin($numtext)';
-                            } else if (userInput.startsWith('tan') == true) {
-                              userInput = 'tan($numtext)';
-                            } else if (userInput.startsWith('log') == true) {
-                              userInput = 'log($numtext)';
-                            } else if (userInput.startsWith('poly') == true) {
-                              // polynomial evaluator for symbols like x, y, etc
-                              userInput = 'poly($numtext)';
-
-                            } else {
-                              userInput += buttons[index];
-                            }
-                          });
-                        },
-                        buttonText: buttons[index],
-                        color: isOperator(buttons[index])
-                            ? Colors.orangeAccent
-                            // not an operator(orange if so). For button color, is it a number?
-                            : isNumber(buttons[index])
-                                ? Colors.blueGrey
-                                : Colors.black,
-                        textColor: isOperator(buttons[index])
-                            ? Colors.white
-                            // not an operator(white text if so). for text color, is it a number?
-                            : isNumber(buttons[index])
-                                ? Colors.black
-                                : Colors.white,
-                      );
+                    switch (index) {
+                      case 0:
+                        {
+                          return MyButton(
+                            buttontapped: () {
+                              setState(() {
+                                numtext = '';
+                                userInput = '';
+                                answer = '0';
+                              });
+                            },
+                            buttonText: buttons[index],
+                            color: Colors.blue[50],
+                            textColor: Colors.black,
+                          );
+                        }
+                      case 1:
+                        {
+                          // negative button
+                          return MyButton(
+                            buttontapped: () {
+                              setState(() {
+                                userInput += '-';
+                              });
+                            },
+                            buttonText: buttons[index],
+                            color: Colors.blue[50],
+                            textColor: Colors.black,
+                          );
+                        }
+                      case 3:
+                        {
+                          // DELETE
+                          return MyButton(
+                            buttontapped: () {
+                              setState(() {
+                                userInput = userInput.substring(
+                                    0, userInput.length - 1);
+                                if (userInput.isEmpty) {
+                                  numtext = '';
+                                }
+                              });
+                            },
+                            buttonText: buttons[index],
+                            color: Colors.blue[50],
+                            textColor: Colors.black,
+                          );
+                        }
+                      case 4:
+                        {
+                          return MyButton(
+                              buttontapped: () {
+                                setState(() {
+                                  String k =
+                                      buttons[index].replaceAll('cos', 'cos()');
+                                  userInput += k;
+                                });
+                              },
+                              color: Colors.blue[50],
+                              buttonText: buttons[index]);
+                        }
+                      case 5:
+                        {
+                          return MyButton(
+                              buttontapped: () {
+                                setState(() {
+                                  String k =
+                                      buttons[index].replaceAll('sin', 'sin()');
+                                  userInput += k;
+                                });
+                              },
+                              color: Colors.blue[50],
+                              buttonText: buttons[index]);
+                        }
+                      case 6:
+                        {
+                          return MyButton(
+                              buttontapped: () {
+                                setState(() {
+                                  String k =
+                                      buttons[index].replaceAll('tan', 'tan()');
+                                  userInput += k;
+                                });
+                              },
+                              color: Colors.blue[50],
+                              buttonText: buttons[index]);
+                        }
+                      case 22:
+                        {
+                          return MyButton(
+                            buttontapped: () {
+                              setState(() {
+                                equalPressed();
+                              });
+                            },
+                            buttonText: buttons[index],
+                            color: Colors.blueGrey,
+                            textColor: Colors.black,
+                          );
+                        }
+                      default:
+                        {
+                          return MyButton(
+                            buttontapped: () {
+                              setState(() {
+                                if (buttons[index] != '²') {
+                                  numtext += buttons[index];
+                                }
+                                if (userInput.startsWith('cos') == true) {
+                                  userInput = 'cos($numtext)';
+                                } else if (userInput.startsWith('sin') ==
+                                    true) {
+                                  userInput = 'sin($numtext)';
+                                } else if (userInput.startsWith('tan') ==
+                                    true) {
+                                  userInput = 'tan($numtext)';
+                                } else if (userInput.startsWith('log') ==
+                                    true) {
+                                  userInput = 'log($numtext)';
+                                } else if (userInput.startsWith('poly') ==
+                                    true) {
+                                  // polynomial evaluator for symbols like x, y, etc
+                                  userInput = 'poly($numtext)';
+                                } else {
+                                  userInput += buttons[index];
+                                }
+                              });
+                            },
+                            buttonText: buttons[index],
+                            color: help.isOperator(buttons[index])
+                                ? Colors.orangeAccent
+                                // not an operator(orange if so). For button color, is it a number?
+                                : help.isNumber(buttons[index])
+                                    ? Colors.blueGrey
+                                    : Colors.black,
+                            textColor: help.isOperator(buttons[index])
+                                ? Colors.white
+                                // not an operator(white text if so). for text color, is it a number?
+                                : help.isNumber(buttons[index])
+                                    ? Colors.black
+                                    : Colors.white,
+                          );
+                        }
                     }
                   }), // GridView.builder
             ),
@@ -272,33 +267,6 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
     );
-  }
-
-  bool isOperator(String x) {
-    if (x == '÷' ||
-        x == '*' ||
-        x == '-' ||
-        x == '²' ||
-        x == '+' ||
-        x == '=' ||
-        x == 'cos' ||
-        x == 'sin' ||
-        x == 'tan' ||
-        x == 'log' ||
-        x == '!') {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  bool isNumber(String x) {
-    for (int i = 0; i <= 9; i++) {
-      if (x[0] == i.toString() || x[0] == '.') {
-        return true;
-      }
-    }
-    return false;
   }
 
 // function to calculate the output operation, ran when equal is pressed
@@ -316,17 +284,6 @@ class _HomePageState extends State<HomePage> {
     if (userInput.contains('÷')) {
       userInput.trim();
       userInput = userInput.replaceAll(RegExp('[÷]'), '/');
-    }
-
-    if (userInput.contains('√')) {
-      // removes whitespaces
-      userInput.trim();
-      // takes index of sqrt and replaces with square root function of next index number
-      int ind = userInput.indexOf('√');
-      // finds nearest whole square root of input
-      String newstr = (help.mySqrt(int.parse(userInput[ind + 1]))).toString();
-      userInput = userInput.replaceAll(RegExp('√'), '');
-      userInput = userInput.replaceRange(ind + 1, ind + 2, newstr);
     }
 
     // context model for dynamic screen overflow protection

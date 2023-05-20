@@ -20,7 +20,7 @@ Widget build(BuildContext context) {
 		padding: const EdgeInsets.all(0.50),
 		child: ClipRRect(
 		// borderRadius: BorderRadius.circular(25),
-    borderRadius: BorderRadius.circular(2),
+    borderRadius: BorderRadius.circular(8),
 		child: Container(
 			color: color,
 			child: Center(

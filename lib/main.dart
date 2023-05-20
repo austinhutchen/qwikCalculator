@@ -80,7 +80,6 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         children: <Widget>[
           Expanded(
-            child: Container(
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
@@ -106,12 +105,11 @@ class _HomePageState extends State<HomePage> {
                       ),
                     )
                   ]),
-            ),
           ),
           Expanded(
             // button setting
             flex: 3,
-            child: Container(
+
               child: GridView.builder(
                   itemCount: buttons.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -263,7 +261,6 @@ class _HomePageState extends State<HomePage> {
                     }
                   }), // GridView.builder
             ),
-          ),
         ],
       ),
     );

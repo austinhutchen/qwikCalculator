@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 class MyButton extends StatelessWidget {
 
 // declaring variables
-final color;
-final textColor;
+final Color? color;
+final Color textColor;
 final String buttonText;
 final buttontapped;
 
 //Constructor
-MyButton({this.color, this.textColor, required this.buttonText, this.buttontapped});
+const MyButton({super.key, required this.color, required this.textColor, required this.buttonText, this.buttontapped});
 
 @override
 Widget build(BuildContext context) {

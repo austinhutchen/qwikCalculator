@@ -86,10 +86,11 @@ class _HomePageState extends State<HomePage> {
     'AC',
     '+/-',
     'DEL',
-    '',
+    'ALT',
     'arccos',
     'arcsin',
     'arctan',
+    'sqrt()'
   ];
 
   @override
@@ -277,7 +278,6 @@ class _HomePageState extends State<HomePage> {
                         );
                       }
                   }
-                  return null;
                 }), // GridView.builder
           ),
         ],

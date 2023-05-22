@@ -256,6 +256,7 @@ class _HomePageState extends State<HomePage> {
                                 buttons = alt;
                               } else {
                                 buttons=origin;
+                                tap=false;
                               }
                             });
                           },

@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
   String i = '';
   double k = 0;
 // Array of button
-  final List<String> buttons = [
+   List<String> buttons = [
     'AC',
     '+/-',
     'DEL',
@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage> {
     '+',
   ];
 // use state to switch between these lists
-  final List<String> alt = [
+   List<String> alt = [
     'AC',
     '+/-',
     'DEL',
@@ -222,7 +222,19 @@ class _HomePageState extends State<HomePage> {
                           textColor: Colors.black,
                         );
                       }
-
+                  case 3:{
+                   // ALT CASE
+                    return MyButton(
+                          buttontapped: () {
+                            setState(() {
+                             buttons=alt;
+                            });
+                          },
+                          buttonText: buttons[index],
+                          color: Colors.blue[50],
+                          textColor: Colors.black,
+                        );
+                  }
                     case 4:
                       {
                         return MyButton(

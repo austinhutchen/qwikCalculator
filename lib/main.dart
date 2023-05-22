@@ -247,7 +247,7 @@ class _HomePageState extends State<HomePage> {
                       }
                     case 3:
                       {
-                        // ALT CASE
+                        // ALT CASE, SWAPS ARRAY LISTS
                         return MyButton(
                           buttontapped: () {
                             setState(() {

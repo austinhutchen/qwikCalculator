@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
   String i = '';
   double k = 0;
 // Array of button
-  List<String> origin = [
+ final List<String> origin = [
     'AC',
     '+/-',
     'DEL',
@@ -109,14 +109,14 @@ class _HomePageState extends State<HomePage> {
     '+',
   ];
 // use state to switch between these lists
-  List<String> alt = [
+  final List<String> alt = [
     'AC',
     '+/-',
     'DEL',
     'ALT',
-    'arccos',
-    'arcsin',
-    'arctan',
+    'acos()',
+    'asin()',
+    'atan()',
     'sqrt()',
     '7',
     '8',
@@ -255,8 +255,8 @@ class _HomePageState extends State<HomePage> {
                                 tap = true;
                                 buttons = alt;
                               } else {
-                                buttons=origin;
-                                tap=false;
+                                buttons = origin;
+                                tap = false;
                               }
                             });
                           },

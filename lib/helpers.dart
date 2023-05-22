@@ -23,6 +23,7 @@ class Helper {
   bool isOperator(String x) {
     if (x == '÷' ||
         x == '*' ||
+        x == 'sqrt()' ||
         x == '-' ||
         x == '²' ||
         x == '+' ||

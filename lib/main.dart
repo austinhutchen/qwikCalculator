@@ -5,6 +5,7 @@ import 'package:math_expressions/math_expressions.dart';
 
 final help = Helper();
 Parser p = Parser();
+bool tap = false;
 void main() {
   runApp(MyApp());
 }
@@ -55,7 +56,33 @@ class _HomePageState extends State<HomePage> {
   String i = '';
   double k = 0;
 // Array of button
-   List<String> buttons = [
+  List<String> origin = [
+    'AC',
+    '+/-',
+    'DEL',
+    'ALT',
+    'cos',
+    'sin',
+    'tan',
+    '!',
+    '7',
+    '8',
+    '9',
+    '÷',
+    '4',
+    '5',
+    '6',
+    '*',
+    '1',
+    '2',
+    '3',
+    '-',
+    '0',
+    '.',
+    '=',
+    '+',
+  ];
+  List<String> buttons = [
     'AC',
     '+/-',
     'DEL',
@@ -82,7 +109,7 @@ class _HomePageState extends State<HomePage> {
     '+',
   ];
 // use state to switch between these lists
-   List<String> alt = [
+  List<String> alt = [
     'AC',
     '+/-',
     'DEL',
@@ -109,12 +136,8 @@ class _HomePageState extends State<HomePage> {
     '+',
   ];
 
-  final List <String> graphing=[
-  'poly()',
-
-
-
-
+  final List<String> graphing = [
+    'poly()',
     '7',
     '8',
     '9',
@@ -222,19 +245,25 @@ class _HomePageState extends State<HomePage> {
                           textColor: Colors.black,
                         );
                       }
-                  case 3:{
-                   // ALT CASE
-                    return MyButton(
+                    case 3:
+                      {
+                        // ALT CASE
+                        return MyButton(
                           buttontapped: () {
                             setState(() {
-                             buttons=alt;
+                              if (tap == false) {
+                                tap = true;
+                                buttons = alt;
+                              } else {
+                                buttons=origin;
+                              }
                             });
                           },
                           buttonText: buttons[index],
                           color: Colors.blue[50],
                           textColor: Colors.black,
                         );
-                  }
+                      }
                     case 4:
                       {
                         return MyButton(

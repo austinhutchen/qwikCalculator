@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> {
     '=',
     '+',
   ];
-
+// use state to switch between these lists
   final List<String> alt = [
     'AC',
     '+/-',
@@ -90,7 +90,47 @@ class _HomePageState extends State<HomePage> {
     'arccos',
     'arcsin',
     'arctan',
-    'sqrt()'
+    'sqrt()',
+    '7',
+    '8',
+    '9',
+    '÷',
+    '4',
+    '5',
+    '6',
+    '*',
+    '1',
+    '2',
+    '3',
+    '-',
+    '0',
+    '.',
+    '=',
+    '+',
+  ];
+
+  final List <String> graphing=[
+  'poly()',
+
+
+
+
+    '7',
+    '8',
+    '9',
+    '÷',
+    '4',
+    '5',
+    '6',
+    '*',
+    '1',
+    '2',
+    '3',
+    '-',
+    '0',
+    '.',
+    '=',
+    '+',
   ];
 
   @override

@@ -453,8 +453,8 @@ class _HomePageState extends State<HomePage> {
                           return MyButton(
                               buttontapped: () {
                                 setState(() {
-                                  String k =
-                                      buttons[index].replaceAll('acos', 'arccos()');
+                                  String k = buttons[index]
+                                      .replaceAll('acos', 'arccos()');
                                   userInput += k;
                                 });
                               },
@@ -467,8 +467,8 @@ class _HomePageState extends State<HomePage> {
                           return MyButton(
                               buttontapped: () {
                                 setState(() {
-                                  String k =
-                                      buttons[index].replaceAll('asin', 'arcsin()');
+                                  String k = buttons[index]
+                                      .replaceAll('asin', 'arcsin()');
                                   userInput += k;
                                 });
                               },
@@ -481,8 +481,22 @@ class _HomePageState extends State<HomePage> {
                           return MyButton(
                               buttontapped: () {
                                 setState(() {
-                                  String k =
-                                      buttons[index].replaceAll('atan', 'arctan()');
+                                  String k = buttons[index]
+                                      .replaceAll('atan', 'arctan()');
+                                  userInput += k;
+                                });
+                              },
+                              color: Colors.blue[50],
+                              buttonText: buttons[index],
+                              textColor: Colors.black);
+                        }
+                      case 7:
+                        {
+                          return MyButton(
+                              buttontapped: () {
+                                setState(() {
+                                  String k = buttons[index]
+                                      .replaceAll('sqrt', 'sqrt()');
                                   userInput += k;
                                 });
                               },
@@ -512,8 +526,7 @@ class _HomePageState extends State<HomePage> {
                                   numtext += buttons[index];
                                 }
                                 // change starts with to "has" using string search algo for larger calculations
-                                  if (userInput.startsWith('arcsin()') ==
-                                    true) {
+                                if (userInput.startsWith('arcsin()') == true) {
                                   // polynomial evaluator for symbols like x, y, etc
                                   userInput = 'arcsin($numtext)';
                                 } else if (userInput.startsWith('arcos()') ==

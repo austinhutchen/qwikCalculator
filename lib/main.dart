@@ -47,8 +47,6 @@ class HomePage extends StatefulWidget {
 // use state and hooks to change between the lists below on push of a button
 // class with helper functions for graphing and more
 
-// parser for parsing string expressions
-
 class _HomePageState extends State<HomePage> {
   var userInput = '';
   var answer = '';
@@ -56,7 +54,7 @@ class _HomePageState extends State<HomePage> {
   String i = '';
   double k = 0;
 // Array of button
- final List<String> origin = [
+  final List<String> origin = [
     'AC',
     '+/-',
     'DEL',
@@ -155,7 +153,23 @@ class _HomePageState extends State<HomePage> {
     '=',
     '+',
   ];
-
+// parser for parsing string expressions
+  void check(userInput) => {
+        if (userInput.startsWith('cos') == true)
+          {userInput = 'cos($numtext)'}
+        else if (userInput.startsWith('sin') == true)
+          {userInput = 'sin($numtext)'}
+        else if (userInput.startsWith('tan') == true)
+          {userInput = 'tan($numtext)'}
+        else if (userInput.startsWith('log') == true)
+          {userInput = 'log($numtext)'}
+        else if (userInput.startsWith('asin') == true)
+          {userInput = 'arcsin($numtext)'}
+        else if (userInput.startsWith('acos') == true)
+          {userInput = 'arccos($numtext)'}
+        else if (userInput.startsWith('atan') == true)
+          {userInput = 'arctan($numtext)'}
+      };
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -336,10 +350,19 @@ class _HomePageState extends State<HomePage> {
                                 userInput = 'tan($numtext)';
                               } else if (userInput.startsWith('log') == true) {
                                 userInput = 'log($numtext)';
-                              } else if (userInput.startsWith('poly') == true) {
+                              } else if (userInput.startsWith('asin') == true) {
                                 // polynomial evaluator for symbols like x, y, etc
-                                userInput = 'poly($numtext)';
-                              } else {
+                                userInput = 'arcsin($numtext)';
+                              } else if (userInput.startsWith('acos') == true) {
+                                // polynomial evaluator for symbols like x, y, etc
+                                userInput = 'arccos($numtext)';
+                              } else if (userInput.startsWith('atan') == true) {
+                                // polynomial evaluator for symbols like x, y, etc
+                                userInput = 'arctan($numtext)';
+                              } else if (userInput.startsWith('sqrt()') == true) {
+                                // polynomial evaluator for symbols like x, y, etc
+                                userInput = 'sqrt($numtext)';
+                              }else {
                                 userInput += buttons[index];
                               }
                             });

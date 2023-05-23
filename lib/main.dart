@@ -6,6 +6,8 @@ import 'package:math_expressions/math_expressions.dart';
 final help = Helper();
 Parser p = Parser();
 bool tap = false;
+// for modular clock, switches between list views
+  int timer =0;
 void main() {
   runApp(MyApp());
 }
@@ -53,8 +55,6 @@ class _HomePageState extends State<HomePage> {
   String numtext = '';
   String i = '';
   double k = 0;
-  // counter that resets eventually and determines array option
-  int modulo =0;
     // the list that alternates with state and modulo 
   List<String> buttons = [
     'AC',
@@ -208,7 +208,7 @@ class _HomePageState extends State<HomePage> {
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 4),
                 itemBuilder: (BuildContext context, int index) {
-                  if (!tap) {
+                  if (timer%3==0) {
                     switch (index) {
                       // these cases will need to be changed for alt array indices
                       case 0:
@@ -264,13 +264,8 @@ class _HomePageState extends State<HomePage> {
                           return MyButton(
                             buttontapped: () {
                               setState(() {
-                                if (tap == false) {
-                                  tap = true;
-                                  buttons = alt;
-                                } else {
-                                  buttons = origin;
-                                  tap = false;
-                                }
+                               timer++;
+                               buttons=alt;
                               });
                             },
                             buttonText: buttons[index],
@@ -366,7 +361,7 @@ class _HomePageState extends State<HomePage> {
                                   userInput = 'arctan($numtext)';
                                 } else if (userInput.startsWith('sqrt()') ==
                                     true) {
-                                  // polynomial evaluator for symbols like x, y, etc
+                                  // square root function 
                                   userInput = 'sqrt($numtext)';
                                 } else {
                                   userInput += buttons[index];
@@ -389,7 +384,7 @@ class _HomePageState extends State<HomePage> {
                           );
                         }
                     }
-                  } else {
+                  } else if(timer%3==1){
                     switch (index) {
                       // CASES FOR ALT INDICES
                       case 0:
@@ -445,13 +440,8 @@ class _HomePageState extends State<HomePage> {
                           return MyButton(
                             buttontapped: () {
                               setState(() {
-                                if (tap == false) {
-                                  tap = true;
-                                  buttons = alt;
-                                } else {
+                                timer++;
                                   buttons = origin;
-                                  tap = false;
-                                }
                               });
                             },
                             buttonText: buttons[index],
@@ -573,6 +563,11 @@ class _HomePageState extends State<HomePage> {
                           );
                         }
                     }
+                  }
+                  else if(timer%3==2){
+                  timer++;
+
+                    
                   }
                 }), // GridView.builder
           ),

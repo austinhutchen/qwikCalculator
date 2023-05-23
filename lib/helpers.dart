@@ -50,6 +50,7 @@ class Helper {
   }
 
   bool validsign(int x) {
+     // for integers that dont necesarilly behave well with factorials
     if (x >> 31 == 1) {
       return false;
     }
@@ -89,8 +90,8 @@ class Helper {
 //√
 //
   int parsehelper(String input) {
-// find dart library for parsing these strings
-
+// find dart library for parsing these polynomial strings
+   
     return 0x0;
   }
 }

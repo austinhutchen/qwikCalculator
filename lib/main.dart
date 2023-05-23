@@ -53,34 +53,9 @@ class _HomePageState extends State<HomePage> {
   String numtext = '';
   String i = '';
   double k = 0;
-
-// Array of button
-  final List<String> origin = [
-    'AC',
-    '+/-',
-    'DEL',
-    'ALT',
-    'cos',
-    'sin',
-    'tan',
-    '!',
-    '7',
-    '8',
-    '9',
-    '÷',
-    '4',
-    '5',
-    '6',
-    '*',
-    '1',
-    '2',
-    '3',
-    '-',
-    '0',
-    '.',
-    '=',
-    '+',
-  ];
+  // counter that resets eventually and determines array option
+  int modulo =0;
+    // the list that alternates with state and modulo 
   List<String> buttons = [
     'AC',
     '+/-',
@@ -107,7 +82,36 @@ class _HomePageState extends State<HomePage> {
     '=',
     '+',
   ];
-// use state to switch between these lists
+// Array of button
+// mod 3 == 0
+  final List<String> origin = [
+    'AC',
+    '+/-',
+    'DEL',
+    'ALT',
+    'cos',
+    'sin',
+    'tan',
+    '!',
+    '7',
+    '8',
+    '9',
+    '÷',
+    '4',
+    '5',
+    '6',
+    '*',
+    '1',
+    '2',
+    '3',
+    '-',
+    '0',
+    '.',
+    '=',
+    '+',
+  ];
+
+// mod 3 == 1
   final List<String> alt = [
     'AC',
     '+/-',
@@ -134,9 +138,16 @@ class _HomePageState extends State<HomePage> {
     '=',
     '+',
   ];
-
+// mod 3 == 2
   final List<String> graphing = [
-    'poly()',
+    'AC',
+    '+/-',
+    'DEL',
+    'ALT',
+    'poly',
+    'power', 
+    'expr',
+    'e',
     '7',
     '8',
     '9',
@@ -500,7 +511,7 @@ class _HomePageState extends State<HomePage> {
                                   userInput += k;
                                 });
                               },
-                              color:  Colors.orangeAccent, 
+                              color: Colors.orangeAccent,
                               buttonText: buttons[index],
                               textColor: Colors.white);
                         }

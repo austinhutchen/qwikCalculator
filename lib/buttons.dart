@@ -15,7 +15,7 @@ class MyButton extends StatelessWidget {
       required this.textColor,
       required this.buttonText,
       this.buttontapped});
-
+   
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

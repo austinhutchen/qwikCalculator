@@ -500,9 +500,9 @@ class _HomePageState extends State<HomePage> {
                                   userInput += k;
                                 });
                               },
-                              color: Colors.blue[50],
+                              color:  Colors.orangeAccent, 
                               buttonText: buttons[index],
-                              textColor: Colors.black);
+                              textColor: Colors.white);
                         }
                       case 22:
                         {
@@ -526,14 +526,14 @@ class _HomePageState extends State<HomePage> {
                                   numtext += buttons[index];
                                 }
                                 // change starts with to "has" using string search algo for larger calculations
-                                if (userInput.startsWith('arcsin()') == true) {
+                                if (userInput.startsWith('arcsin') == true) {
                                   // polynomial evaluator for symbols like x, y, etc
                                   userInput = 'arcsin($numtext)';
-                                } else if (userInput.startsWith('arcos()') ==
+                                } else if (userInput.startsWith('arccos') ==
                                     true) {
                                   // polynomial evaluator for symbols like x, y, etc
                                   userInput = 'arccos($numtext)';
-                                } else if (userInput.startsWith('arctan()') ==
+                                } else if (userInput.startsWith('arctan') ==
                                     true) {
                                   // polynomial evaluator for symbols like x, y, etc
                                   userInput = 'arctan($numtext)';

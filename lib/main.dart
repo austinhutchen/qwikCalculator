@@ -9,7 +9,7 @@ bool tap = false;
 // for modular clock, switches between list views
 int timer = 0;
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class SettingsScreenNotifier extends ChangeNotifier {
@@ -29,7 +29,7 @@ class SettingsScreenNotifier extends ChangeNotifier {
 
 class MyApp extends StatelessWidget {
   @override
-  MyApp({super.key});
+  const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
@@ -146,8 +146,8 @@ class _HomePageState extends State<HomePage> {
     'ALT',
     'poly',
     'power',
-    'expr',
-    'e',
+    'graph',
+    'x',
     '7',
     '8',
     '9',
@@ -267,7 +267,6 @@ class _HomePageState extends State<HomePage> {
                                timer++;
                                 if (timer % 3 == 2 ) {
                                   buttons = origin;
-                                
                                 }
                                 if (timer % 3 == 0) {
                                   buttons = alt;
@@ -343,9 +342,6 @@ class _HomePageState extends State<HomePage> {
                           return MyButton(
                             buttontapped: () {
                               setState(() {
-                                if (buttons[index] != '²') {
-                                  numtext += buttons[index];
-                                }
                                 if (userInput.startsWith('cos') == true) {
                                   userInput = 'cos($numtext)';
                                 } else if (userInput.startsWith('sin') ==

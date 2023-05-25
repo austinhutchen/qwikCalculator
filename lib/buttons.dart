@@ -11,7 +11,7 @@ class MyButton extends StatelessWidget {
 //Constructor
   const MyButton(
       {super.key,
-      required this.color,
+     required this.color,
       required this.textColor,
       required this.buttonText,
       this.buttontapped});

@@ -264,7 +264,7 @@ class _HomePageState extends State<HomePage> {
                             buttontapped: () {
                               setState(() {
                                // FIX THIS
-                               timer++;
+                              
                                 if (timer % 3 == 2 ) {
                                   buttons = origin;
                                 }
@@ -274,6 +274,7 @@ class _HomePageState extends State<HomePage> {
                                 if (timer % 3 == 1) {
                                   buttons = graphing;
                                 }
+                                 timer++;
                               });
                             },
                             buttonText: buttons[index],

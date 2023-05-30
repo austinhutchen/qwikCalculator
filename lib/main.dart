@@ -273,7 +273,6 @@ class _HomePageState extends State<HomePage> {
                                 }
                                 if (timer % 3 == 1) {
                                   buttons = graphing;
-                                  timer=1;
                                 }
                               });
                             },

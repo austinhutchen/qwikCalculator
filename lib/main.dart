@@ -208,190 +208,183 @@ class _HomePageState extends State<HomePage> {
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 4),
                 itemBuilder: (BuildContext context, int index) {
-                    switch (index) {
-                      // these cases will need to be changed for alt array indices
-                      case 0:
-                        {
-                          return MyButton(
-                            buttontapped: () {
-                              setState(() {
+                  switch (index) {
+                    // these cases will need to be changed for alt array indices
+                    case 0:
+                      {
+                        return MyButton(
+                          buttontapped: () {
+                            setState(() {
+                              numtext = '';
+                              userInput = '';
+                              answer = '0';
+                            });
+                          },
+                          buttonText: buttons[index],
+                          color: Colors.blue[50],
+                          textColor: Colors.black,
+                        );
+                      }
+                    case 1:
+                      {
+                        // negative button
+                        return MyButton(
+                          buttontapped: () {
+                            setState(() {
+                              userInput += '-';
+                            });
+                          },
+                          buttonText: buttons[index],
+                          color: Colors.blue[50],
+                          textColor: Colors.black,
+                        );
+                      }
+                    case 2:
+                      {
+                        // DELETE
+                        return MyButton(
+                          buttontapped: () {
+                            setState(() {
+                              userInput =
+                                  userInput.substring(0, userInput.length - 1);
+                              if (userInput.isEmpty) {
                                 numtext = '';
-                                userInput = '';
-                                answer = '0';
+                              }
+                            });
+                          },
+                          buttonText: buttons[index],
+                          color: Colors.blue[50],
+                          textColor: Colors.black,
+                        );
+                      }
+                    case 3:
+                      {
+                        // ALT CASE, SWAPS ARRAY LISTS
+                        return MyButton(
+                          buttontapped: () {
+                            setState(() {
+                              // FIX THIS
+
+                              if (timer % 3 == 2) {
+                                buttons = origin;
+                              }
+                              if (timer % 3 == 0) {
+                                buttons = alt;
+                              }
+                              if (timer % 3 == 1) {
+                                buttons = graphing;
+                              }
+                              timer++;
+                            });
+                          },
+                          buttonText: buttons[index],
+                          color: Colors.blue[50],
+                          textColor: Colors.black,
+                        );
+                      }
+                    case 4:
+                      {
+                        return MyButton(
+                            buttontapped: () {
+                              setState(() {
+                                String k =
+                                    buttons[index].replaceAll('cos', 'cos()');
+                                userInput += k;
                               });
                             },
-                            buttonText: buttons[index],
                             color: Colors.blue[50],
-                            textColor: Colors.black,
-                          );
-                        }
-                      case 1:
-                        {
-                          // negative button
-                          return MyButton(
+                            buttonText: buttons[index],
+                            textColor: Colors.black);
+                      }
+                    case 5:
+                      {
+                        return MyButton(
                             buttontapped: () {
                               setState(() {
-                                userInput += '-';
+                                String k =
+                                    buttons[index].replaceAll('sin', 'sin()');
+                                userInput += k;
                               });
                             },
-                            buttonText: buttons[index],
                             color: Colors.blue[50],
-                            textColor: Colors.black,
-                          );
-                        }
-                      case 2:
-                        {
-                          // DELETE
-                          return MyButton(
+                            buttonText: buttons[index],
+                            textColor: Colors.black);
+                      }
+                    case 6:
+                      {
+                        return MyButton(
                             buttontapped: () {
                               setState(() {
-                                userInput = userInput.substring(
-                                    0, userInput.length - 1);
-                                if (userInput.isEmpty) {
-                                  numtext = '';
-                                }
+                                String k =
+                                    buttons[index].replaceAll('tan', 'tan()');
+                                userInput += k;
                               });
                             },
-                            buttonText: buttons[index],
                             color: Colors.blue[50],
-                            textColor: Colors.black,
-                          );
-                        }
-                      case 3:
-                        {
-                          // ALT CASE, SWAPS ARRAY LISTS
-                          return MyButton(
-                            buttontapped: () {
-                              setState(() {
-                               // FIX THIS
-                              
-                                if (timer % 3 == 2 ) {
-                                  buttons = origin;
-                                }
-                                if (timer % 3 == 0) {
-                                  buttons = alt;
-                                }
-                                if (timer % 3 == 1) {
-                                  buttons = graphing;
-                                }
-                                 timer++;
-                              });
-                            },
                             buttonText: buttons[index],
-                            color: Colors.blue[50],
-                            textColor: Colors.black,
-                          );
-                        }
-                      case 4:
-                        {
-                          return MyButton(
-                              buttontapped: () {
-                                setState(() {
-                                  String k =
-                                      buttons[index].replaceAll('cos', 'cos()');
-                                  userInput += k;
-                                });
-                              },
-                              color: Colors.blue[50],
-                              buttonText: buttons[index],
-                              textColor: Colors.black);
-                        }
-                      case 5:
-                        {
-                          return MyButton(
-                              buttontapped: () {
-                                setState(() {
-                                  String k =
-                                      buttons[index].replaceAll('sin', 'sin()');
-                                  userInput += k;
-                                });
-                              },
-                              color: Colors.blue[50],
-                              buttonText: buttons[index],
-                              textColor: Colors.black);
-                        }
-                      case 6:
-                        {
-                          return MyButton(
-                              buttontapped: () {
-                                setState(() {
-                                  String k =
-                                      buttons[index].replaceAll('tan', 'tan()');
-                                  userInput += k;
-                                });
-                              },
-                              color: Colors.blue[50],
-                              buttonText: buttons[index],
-                              textColor: Colors.black);
-                        }
-                      case 22:
-                        {
-                          return MyButton(
-                            buttontapped: () {
-                              setState(() {
-                                equalPressed();
-                              });
-                            },
-                            buttonText: buttons[index],
-                            color: Colors.blueGrey,
-                            textColor: Colors.black,
-                          );
-                        }
-                      default:
-                        {
-                          return MyButton(
-                            buttontapped: () {
-                              setState(() {
-                                if (userInput.startsWith('cos') == true) {
-                                  userInput = 'cos($numtext)';
-                                } else if (userInput.startsWith('sin') ==
-                                    true) {
-                                  userInput = 'sin($numtext)';
-                                } else if (userInput.startsWith('tan') ==
-                                    true) {
-                                  userInput = 'tan($numtext)';
-                                } else if (userInput.startsWith('log') ==
-                                    true) {
-                                  userInput = 'log($numtext)';
-                                } else if (userInput.startsWith('asin') ==
-                                    true) {
-                                  // polynomial evaluator for symbols like x, y, etc
-                                  userInput = 'arcsin($numtext)';
-                                } else if (userInput.startsWith('acos') ==
-                                    true) {
-                                  // polynomial evaluator for symbols like x, y, etc
-                                  userInput = 'arccos($numtext)';
-                                } else if (userInput.startsWith('atan') ==
-                                    true) {
-                                  // polynomial evaluator for symbols like x, y, etc
-                                  userInput = 'arctan($numtext)';
-                                } else if (userInput.startsWith('sqrt()') ==
-                                    true) {
-                                  // square root function
-                                  userInput = 'sqrt($numtext)';
-                                } else {
-                                  userInput += buttons[index];
-                                }
-                              });
-                            },
-                            buttonText: buttons[index],
-                            color: help.isOperator(buttons[index])
-                                ? Colors.orangeAccent
-                                // not an operator(orange if so). For button color, is it a number?
-                                : help.isNumber(buttons[index])
-                                    ? Colors.blueGrey
-                                    : Colors.white,
-                            textColor: help.isOperator(buttons[index])
-                                ? Colors.white
-                                // not an operator(white text if so). for text color, is it a number?
-                                : help.isNumber(buttons[index])
-                                    ? Colors.black
-                                    : Colors.black,
-                          );
-                        }
-                    }
+                            textColor: Colors.black);
+                      }
+                    case 22:
+                      {
+                        return MyButton(
+                          buttontapped: () {
+                            setState(() {
+                              equalPressed();
+                            });
+                          },
+                          buttonText: buttons[index],
+                          color: Colors.blueGrey,
+                          textColor: Colors.black,
+                        );
+                      }
+                    default:
+                      {
+                        return MyButton(
+                          buttontapped: () {
+                            setState(() {
+                              if (userInput.startsWith('cos') == true) {
+                                userInput = 'cos($numtext)';
+                              } else if (userInput.startsWith('sin') == true) {
+                                userInput = 'sin($numtext)';
+                              } else if (userInput.startsWith('tan') == true) {
+                                userInput = 'tan($numtext)';
+                              } else if (userInput.startsWith('log') == true) {
+                                userInput = 'log($numtext)';
+                              } else if (userInput.startsWith('arcsin') == true) {
+                                // polynomial evaluator for symbols like x, y, etc
+                                userInput = 'arcsin($numtext)';
+                              } else if (userInput.startsWith('arccos') == true) {
+                                // polynomial evaluator for symbols like x, y, etc
+                                userInput = 'arccos($numtext)';
+                              } else if (userInput.startsWith('arctan') == true) {
+                                // polynomial evaluator for symbols like x, y, etc
+                                userInput = 'arctan($numtext)';
+                              } else if (userInput.startsWith('sqrt') ==
+                                  true) {
+                                // square root function
+                                userInput = 'sqrt($numtext)';
+                              } else {
+                                userInput += buttons[index];
+                              }
+                            });
+                          },
+                          buttonText: buttons[index],
+                          color: help.isOperator(buttons[index])
+                              ? Colors.orangeAccent
+                              // not an operator(orange if so). For button color, is it a number?
+                              : help.isNumber(buttons[index])
+                                  ? Colors.blueGrey
+                                  : Colors.white,
+                          textColor: help.isOperator(buttons[index])
+                              ? Colors.white
+                              // not an operator(white text if so). for text color, is it a number?
+                              : help.isNumber(buttons[index])
+                                  ? Colors.black
+                                  : Colors.black,
+                        );
+                      }
                   }
-                ), // GridView.builder
+                }), // GridView.builder
           ),
         ],
       ),
@@ -402,7 +395,6 @@ class _HomePageState extends State<HomePage> {
 // experiment with moving some of this code up before equal is pressed?
 // into respective parts of the functions above
   void equalPressed() {
-    // this needs to be fixed for larger operations with more than one square, such as cos(5^2)
     if (userInput.endsWith('²')) {
       int ind = userInput.indexOf('²');
       userInput = userInput.replaceAll(RegExp('[²]'), '');

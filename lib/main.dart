@@ -398,14 +398,16 @@ class _HomePageState extends State<HomePage> {
     if (userInput.endsWith('²')) {
       int ind = userInput.indexOf('²');
       userInput = userInput.replaceAll(RegExp('[²]'), '');
-      userInput = userInput.replaceRange(ind - numtext.length, ind,
-          help.mySquare(int.parse(numtext)).toString());
+      userInput = userInput.replaceRange(ind - numtext.length, ind, help.mySquare(int.parse(numtext)).toString());
     }
 
     if (userInput.contains('÷')) {
       userInput = userInput.replaceAll(RegExp('[÷]'), '/');
     }
-
+    
+    if (userInput.contains('power')) {
+      userInput = userInput.replaceAll(RegExp('[power]'), '^');
+    }
     // context model for dynamic screen overflow protection
     ContextModel cm = ContextModel();
     // parser to parse string expressions into numerical value

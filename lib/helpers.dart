@@ -1,4 +1,3 @@
-
 import 'dart:math';
 
 // class used for more complex operations not supported by the dart library
@@ -51,7 +50,7 @@ class Helper {
   }
 
   bool validsign(int x) {
-     // for integers that dont necesarilly behave well with factorials
+    // for integers that dont necesarilly behave well with factorials
     if (x >> 31 == 1) {
       return false;
     }
@@ -84,6 +83,7 @@ class Helper {
     // Return the result
     return result;
   }
+
   // port this algorithm from c++
   /* 
 Float
@@ -114,7 +114,16 @@ Sqrt(Float x)
 //
   int parsehelper(String input) {
 // find dart library for parsing these polynomial strings
-   
+
     return 0x0;
   }
+}
+
+int factorial(int x) {
+  if (x == 1 || x == 0) {
+    return 1;
+  } else {
+    x = factorial(x - 1) * x;
+  }
+  return x;
 }

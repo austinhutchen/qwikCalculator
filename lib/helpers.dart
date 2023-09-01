@@ -4,21 +4,6 @@ import 'dart:math';
 class Helper {
   Helper();
 
-  int mySquare(int n) {
-    int i = n;
-    int sq = 0;
-    int count = 0;
-
-    while (i > 0) {
-      if ((i & 1) == 1) {
-        sq += n << count;
-      }
-      i = i >> 1;
-      count++;
-    }
-
-    return sq;
-  }
 
   bool isOperator(String x) {
     if (x == '÷' ||

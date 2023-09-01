@@ -144,7 +144,7 @@ class _HomePageState extends State<HomePage> {
     '+/-',
     'DEL',
     'ALT',
-    'poly',
+    'log',
     '^',
     'graph',
     'x',
@@ -342,29 +342,32 @@ class _HomePageState extends State<HomePage> {
                         return MyButton(
                           buttontapped: () {
                             setState(() {
-                              if (userInput.startsWith('cos') == true) {
+                              if (userInput.contains('cos') == true) {
                                 userInput = 'cos($numtext)';
-                              } else if (userInput.startsWith('sin()') == true) {
+                              } else if (userInput.contains('sin') == true) {
                                 userInput = 'sin($numtext)';
-                              } else if (userInput.startsWith('tan()') == true) {
+                              } else if (userInput.contains('tan') == true) {
                                 userInput = 'tan($numtext)';
-                              } else if (userInput.startsWith('log()') == true) {
+                              } else if (userInput.contains('log') == true) {
                                 userInput = 'log($numtext)';
-                              } else if (userInput.startsWith('arcsin()') ==
+                              } else if (userInput.contains('arcsin') ==
                                   true) {
                                 // polynomial evaluator for symbols like x, y, etc
                                 userInput = 'arcsin($numtext)';
-                              } else if (userInput.startsWith('arccos()') ==
+                              } else if (userInput.contains('arccos') ==
                                   true) {
                                 // polynomial evaluator for symbols like x, y, etc
                                 userInput = 'arccos($numtext)';
-                              } else if (userInput.startsWith('arctan()') ==
+                              } else if (userInput.contains('arctan') ==
                                   true) {
                                 // polynomial evaluator for symbols like x, y, etc
                                 userInput = 'arctan($numtext)';
-                              } else if (userInput.startsWith('sqrt()') == true) {
+                              } else if (userInput.contains('sqrt') == true) {
                                 // square root function
                                 userInput = 'sqrt($numtext)';
+                              } else if (userInput.contains('log') == true) {
+                                // square root function
+                                userInput = 'log($numtext)';
                               } else {
                                 userInput += buttons[index];
                               }
@@ -397,18 +400,10 @@ class _HomePageState extends State<HomePage> {
 // experiment with moving some of this code up before equal is pressed?
 // into respective parts of the functions above
   void equalPressed() {
-    if (userInput.endsWith('²')) {
-      int ind = userInput.indexOf('²');
-      userInput = userInput.replaceAll(RegExp('[²]'), '');
-      userInput = userInput.replaceRange(ind - numtext.length, ind,
-          help.mySquare(int.parse(numtext)).toString());
-    }
-
-    if (userInput.contains('÷')) {
+    if (ys) if (userInput.contains('÷')) {
       userInput = userInput.replaceAll(RegExp('[÷]'), '/');
     }
 
-  
     // context model for dynamic screen overflow protection
     ContextModel cm = ContextModel();
     // parser to parse string expressions into numerical value

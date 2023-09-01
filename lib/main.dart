@@ -350,16 +350,13 @@ class _HomePageState extends State<HomePage> {
                                 userInput = 'tan($numtext)';
                               } else if (userInput.contains('log') == true) {
                                 userInput = 'log($numtext)';
-                              } else if (userInput.contains('arcsin') ==
-                                  true) {
+                              } else if (userInput.contains('arcsin') == true) {
                                 // polynomial evaluator for symbols like x, y, etc
                                 userInput = 'arcsin($numtext)';
-                              } else if (userInput.contains('arccos') ==
-                                  true) {
+                              } else if (userInput.contains('arccos') == true) {
                                 // polynomial evaluator for symbols like x, y, etc
                                 userInput = 'arccos($numtext)';
-                              } else if (userInput.contains('arctan') ==
-                                  true) {
+                              } else if (userInput.contains('arctan') == true) {
                                 // polynomial evaluator for symbols like x, y, etc
                                 userInput = 'arctan($numtext)';
                               } else if (userInput.contains('sqrt') == true) {
@@ -377,13 +374,13 @@ class _HomePageState extends State<HomePage> {
                           color: help.isOperator(buttons[index])
                               ? Colors.orangeAccent
                               // not an operator(orange if so). For button color, is it a number?
-                              : help.isNumber(buttons[index])
+                              : help.isNumber(buttons[index], 0)
                                   ? Colors.blueGrey
                                   : Colors.white,
                           textColor: help.isOperator(buttons[index])
                               ? Colors.white
                               // not an operator(white text if so). for text color, is it a number?
-                              : help.isNumber(buttons[index])
+                              : help.isNumber(buttons[index], 0)
                                   ? Colors.black
                                   : Colors.black,
                         );
@@ -400,12 +397,11 @@ class _HomePageState extends State<HomePage> {
 // experiment with moving some of this code up before equal is pressed?
 // into respective parts of the functions above
   void equalPressed() {
+    // context model for dynamic screen overflow protection
+    ContextModel cm = ContextModel();
     if (userInput.contains('÷')) {
       userInput = userInput.replaceAll(RegExp('[÷]'), '/');
     }
-
-    // context model for dynamic screen overflow protection
-    ContextModel cm = ContextModel();
     // parser to parse string expressions into numerical value
     Expression exp = p.parse(userInput);
     double eval = exp.evaluate(EvaluationType.REAL, cm);

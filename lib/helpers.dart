@@ -25,9 +25,9 @@ class Helper {
     }
   }
 
-  bool isNumber(String x) {
+  bool isNumber(String x, int index) {
     for (int i = 0; i <= 9; i++) {
-      if (x[0] == i.toString() || x[0] == '.') {
+      if (x[index] == i.toString() || x[index] == '.') {
         return true;
       }
     }
@@ -104,11 +104,4 @@ Sqrt(Float x)
   }
 }
 
-int factorial(int x) {
-  if (x == 1 || x == 0) {
-    return 1;
-  } else {
-    x = factorial(x - 1) * x;
-  }
-  return x;
-}
+

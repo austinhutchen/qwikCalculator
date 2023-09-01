@@ -400,7 +400,7 @@ class _HomePageState extends State<HomePage> {
 // experiment with moving some of this code up before equal is pressed?
 // into respective parts of the functions above
   void equalPressed() {
-    if (ys) if (userInput.contains('÷')) {
+    if (userInput.contains('÷')) {
       userInput = userInput.replaceAll(RegExp('[÷]'), '/');
     }
 

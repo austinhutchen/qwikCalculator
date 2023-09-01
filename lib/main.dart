@@ -145,7 +145,7 @@ class _HomePageState extends State<HomePage> {
     'DEL',
     'ALT',
     'poly',
-    'power',
+    '^',
     'graph',
     'x',
     '7',
@@ -344,23 +344,25 @@ class _HomePageState extends State<HomePage> {
                             setState(() {
                               if (userInput.startsWith('cos') == true) {
                                 userInput = 'cos($numtext)';
-                              } else if (userInput.startsWith('sin') == true) {
+                              } else if (userInput.startsWith('sin()') == true) {
                                 userInput = 'sin($numtext)';
-                              } else if (userInput.startsWith('tan') == true) {
+                              } else if (userInput.startsWith('tan()') == true) {
                                 userInput = 'tan($numtext)';
-                              } else if (userInput.startsWith('log') == true) {
+                              } else if (userInput.startsWith('log()') == true) {
                                 userInput = 'log($numtext)';
-                              } else if (userInput.startsWith('arcsin') == true) {
+                              } else if (userInput.startsWith('arcsin()') ==
+                                  true) {
                                 // polynomial evaluator for symbols like x, y, etc
                                 userInput = 'arcsin($numtext)';
-                              } else if (userInput.startsWith('arccos') == true) {
+                              } else if (userInput.startsWith('arccos()') ==
+                                  true) {
                                 // polynomial evaluator for symbols like x, y, etc
                                 userInput = 'arccos($numtext)';
-                              } else if (userInput.startsWith('arctan') == true) {
+                              } else if (userInput.startsWith('arctan()') ==
+                                  true) {
                                 // polynomial evaluator for symbols like x, y, etc
                                 userInput = 'arctan($numtext)';
-                              } else if (userInput.startsWith('sqrt') ==
-                                  true) {
+                              } else if (userInput.startsWith('sqrt()') == true) {
                                 // square root function
                                 userInput = 'sqrt($numtext)';
                               } else {
@@ -398,16 +400,15 @@ class _HomePageState extends State<HomePage> {
     if (userInput.endsWith('²')) {
       int ind = userInput.indexOf('²');
       userInput = userInput.replaceAll(RegExp('[²]'), '');
-      userInput = userInput.replaceRange(ind - numtext.length, ind, help.mySquare(int.parse(numtext)).toString());
+      userInput = userInput.replaceRange(ind - numtext.length, ind,
+          help.mySquare(int.parse(numtext)).toString());
     }
 
     if (userInput.contains('÷')) {
       userInput = userInput.replaceAll(RegExp('[÷]'), '/');
     }
-    
-    if (userInput.contains('power')) {
-      userInput = userInput.replaceAll(RegExp('[power]'), '^');
-    }
+
+  
     // context model for dynamic screen overflow protection
     ContextModel cm = ContextModel();
     // parser to parse string expressions into numerical value

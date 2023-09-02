@@ -395,7 +395,7 @@ class _HomePageState extends State<HomePage> {
 
 // function to calculate the output operation, ran when equal is pressed
 // experiment with moving some of this code up before equal is pressed?
-// into respective parts of the functions above
+// into respective parts of the functions abov
   void equalPressed() {
     // context model for dynamic screen overflow protection
     ContextModel cm = ContextModel();

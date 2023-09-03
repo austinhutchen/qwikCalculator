@@ -56,6 +56,24 @@ class _HomePageState extends State<HomePage> {
   String i = '';
   double k = 0;
   // the list that alternates with state and modulo
+  final List<String> numpad = [
+    '7',
+    '8',
+    '9',
+    '÷',
+    '4',
+    '5',
+    '6',
+    '*',
+    '1',
+    '2',
+    '3',
+    '-',
+    '0',
+    '.',
+    '=',
+    '+'
+  ];
   List<String> buttons = [
     'AC',
     '+/-',

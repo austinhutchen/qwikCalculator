@@ -74,6 +74,7 @@ class _HomePageState extends State<HomePage> {
     '=',
     '+'
   ];
+  
   List<String> buttons = [
     'AC',
     '+/-',
@@ -361,35 +362,35 @@ class _HomePageState extends State<HomePage> {
                           buttontapped: () {
                             setState(() {
                               if (userInput.contains('cos') == true &&
-                                  numtext.toString() != ' ') {
+                                  numtext.toString() != '') {
                                 userInput = 'cos($numtext)';
                               } else if (userInput.contains('sin()') == true &&
-                                  numtext.toString() != ' ') {
+                                  numtext.toString() != '') {
                                 userInput = 'sin($numtext)';
                               } else if (userInput.contains('tan()') == true &&
-                                  numtext.toString() != ' ') {
+                                  numtext.toString() != '') {
                                 userInput = 'tan($numtext)';
                               } else if (userInput.contains('arcsin()') ==
                                       true &&
-                                  numtext.toString() != ' ') {
+                                  numtext.toString() != '') {
                                 // polynomial evaluator for symbols like x, y, etc
                                 userInput = 'arcsin($numtext)';
                               } else if (userInput.contains('arccos()') ==
                                       true &&
-                                  numtext.toString() != ' ') {
+                                  numtext.toString() != '') {
                                 // polynomial evaluator for symbols like x, y, etc
                                 userInput = 'arccos($numtext)';
                               } else if (userInput.contains('arctan()') ==
                                       true &&
-                                  numtext.toString() != ' ') {
+                                  numtext.toString() != '') {
                                 // polynomial evaluator for symbols like x, y, etc
                                 userInput = 'arctan($numtext)';
                               } else if (userInput.contains('sqrt()') == true &&
-                                  numtext.toString() != ' ') {
+                                  numtext.toString() != '') {
                                 // square root function
                                 userInput = 'sqrt($numtext)';
                               } else if (userInput.contains('log') == true &&
-                                  numtext.toString() != ' ') {
+                                  numtext.toString() != '') {
                                 // square root function
                                 userInput = 'log($numtext)';
                               } else {

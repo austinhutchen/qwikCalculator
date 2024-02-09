@@ -32,7 +32,8 @@ class MyButton extends StatelessWidget {
                 buttonText,
                 style: TextStyle(
                   color: textColor,
-                  fontSize: 30,
+                  fontSize: 
+                  '30svh',
                   fontWeight: FontWeight.bold,
                 ),
               ),

@@ -371,26 +371,20 @@ class _HomePageState extends State<HomePage> {
                                   numtext.toString() != '') {
                                 userInput = 'tan($numtext)';
                               } else if (userInput.startsWith('arcsin()') ==
-                                      true &&
-                                  numtext.toString() != '') {
+                                      true ) {
                                 // polynomial evaluator for symbols like x, y, etc
                                 userInput = 'arcsin($numtext)';
                               } else if (userInput.startsWith('arccos()') ==
-                                      true &&
-                                  numtext.toString() != '') {
+                                      true {
                                 // polynomial evaluator for symbols like x, y, etc
                                 userInput = 'arccos($numtext)';
-                              } else if (userInput.startsWith('arctan()') ==
-                                      true &&
-                                  numtext.toString() != '') {
+                              } else if (userInput.startsWith('arctan()') == true) {
                                 // polynomial evaluator for symbols like x, y, etc
                                 userInput = 'arctan($numtext)';
-                              } else if (userInput.startsWith('sqrt()') == true &&
-                                  numtext.toString() != '') {
+                              } else if (userInput.startsWith('sqrt()') == true {
                                 // square root function
                                 userInput = 'sqrt($numtext)';
-                              } else if (userInput.startsWith('log') == true &&
-                                  numtext.toString() != '') {
+                              } else if (userInput.startsWith('log') == true ) {
                                 // square root function
                                 userInput = 'log($numtext)';
                               } else {

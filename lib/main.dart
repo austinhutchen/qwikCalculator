@@ -419,6 +419,7 @@ class _HomePageState extends State<HomePage> {
 // experiment with moving some of this code up before equal is pressed?
 // into respective parts of the functions above
   void equalPressed() {
+
     // context model for dynamic screen overflow protection
     ContextModel cm = ContextModel();
     if (userInput.contains('÷')) {

@@ -6,6 +6,7 @@ class MyButton extends StatelessWidget {
   final Color? color;
   final Color textColor;
   final String buttonText;
+  final double textSize=30.0;
   final buttontapped;
 
 //Constructor
@@ -32,8 +33,7 @@ class MyButton extends StatelessWidget {
                 buttonText,
                 style: TextStyle(
                   color: textColor,
-                  fontSize: 
-                  '30svh',
+                  fontSize: textSize,
                   fontWeight: FontWeight.bold,
                 ),
               ),

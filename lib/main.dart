@@ -11,7 +11,11 @@ int timer = 0;
 void main() {
   runApp(const MyApp());
 }
-
+extension NumberParsing on String{
+    int parseInt(){
+        return int.parse(this);
+      }
+  }
 class SettingsScreenNotifier extends ChangeNotifier {
   /// 1
   bool _isDarkModeEnabled = false;
@@ -375,15 +379,15 @@ class _HomePageState extends State<HomePage> {
                                 // polynomial evaluator for symbols like x, y, etc
                                 userInput = 'arcsin($numtext)';
                               } else if (userInput.startsWith('arccos()') ==
-                                      true {
+                                      true) {
                                 // polynomial evaluator for symbols like x, y, etc
                                 userInput = 'arccos($numtext)';
                               } else if (userInput.startsWith('arctan()') == true) {
                                 // polynomial evaluator for symbols like x, y, etc
                                 userInput = 'arctan($numtext)';
-                              } else if (userInput.startsWith('sqrt()') == true {
+                              } else if (userInput.startsWith('sqrt()') == true)  {
                                 // square root function
-                                userInput = 'sqrt($numtext)';
+                                userInput = help.mySqrt('$numtext'.parseInt()).toString();
                               } else if (userInput.startsWith('log') == true ) {
                                 // square root function
                                 userInput = 'log($numtext)';

@@ -285,8 +285,6 @@ class _HomePageState extends State<HomePage> {
                         return MyButton(
                           buttontapped: () {
                             setState(() {
-                              // FIX THIS
-
                               if (timer % 3 == 2) {
                                 buttons = origin;
                               }
@@ -366,31 +364,33 @@ class _HomePageState extends State<HomePage> {
                             setState(() {
                               if (userInput.contains('cos') == true &&
                                   numtext.toString() != '') {
-                                userInput += 'cos($numtext)';
+                                userInput += (help.myCos('$numtext'.parseDouble())).toString();
                               } else if (userInput.contains('sin()') == true &&
                                   numtext.toString() != '') {
-                                userInput += 'sin($numtext)';
+                                userInput += (help.mySin('$numtext'.parseDouble())).toString();
                               } else if (userInput.contains('tan()') == true &&
                                   numtext.toString() != '') {
-                                userInput += 'tan($numtext)';
+                                userInput += (help.myTan('$numtext'.parseDouble())).toString();
                               } else if (userInput.contains('arcsin()') ==
                                       true ) {
                                 // polynomial evaluator for symbols like x, y, etc
-                                userInput += 'arcsin($numtext)';
+                                userInput += (help.myArcSin('$numtext'.parseDouble())).toString();
                               } else if (userInput.contains('arccos()') ==
                                       true) {
                                 // polynomial evaluator for symbols like x, y, etc
-                                userInput += 'arccos($numtext)';
+                                userInput += (help.myArcCos('$numtext'.parseDouble())).toString();
                               } else if (userInput.contains('arctan()') == true) {
                                 // polynomial evaluator for symbols like x, y, etc
-                                userInput += 'arctan($numtext)';
+                                userInput += (help.myArcTan('$numtext'.parseDouble())).toString();
                               } else if (userInput.contains('sqrt()') == true)  {
                                 // square root function
                                 userInput += (help.mySqrt('$numtext'.parseDouble())).toString();
                               } else if (userInput.contains('log') == true ) {
                                 // square root function
                                 userInput += (help.log2('$numtext'.parseDouble())).toString();
-                              } else {
+                              } else if( userInput.contains('!') == true){
+                               userInput+= (help.myFactorial('$numtext'.parseDouble())).toString();
+                              }else {
                                 userInput += buttons[index];
                               }
                             });

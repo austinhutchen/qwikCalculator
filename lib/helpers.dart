@@ -1,9 +1,35 @@
 import 'dart:math';
 
-// class used for more complex operations not supported by the dart library
+// homebrew library used for calculator fuctions and extensions not supported by dart 
+
+class Point{
+   double x=0.0;
+   double y=0.0;
+
+   Point(this.x,this.y);
+
+   static double Distance(Point a, Point b){
+    Helper h =Helper(); 
+    double dx = a.x - b.x ;
+    double dy = a.y - b.y ;
+      return (h.mySqrt(dx*dx+dy*dy));
+    }
+
+  }
+
+class Graph{
+  var points= <Point>{};
+  Graph(this.points);
+
+}
+
+  
+
 class Helper {
   Helper();
 
+
+ 
   bool isOperator(String x) {
     if (x == '÷' ||
         x == '*' ||
@@ -33,6 +59,15 @@ class Helper {
     return false;
   }
 
+  double myFactorial( double x){
+      if(x==0 || x==1){
+         return x;
+        }
+        else{
+           return x*myFactorial(x-1);
+
+          }
+    }
   bool validsign(int x) {
     // for integers that dont necesarilly behave well with factorials
     if (x >> 31 == 1) {
@@ -68,12 +103,19 @@ class Helper {
     return result;
   }
 
-double mySin(double N){
 
+double eulers(double N){
+// sim of e^x = x^n / n!
+return 0.0;
+  }
+double mySin(double N){
+//sin simulation using to calculate value  
+  
    return 1.0; 
   }
 
   double myCos(double N){
+
 
 return 1.0;
     }
@@ -83,13 +125,18 @@ return 1.0;
     }
 
   double myArcSin(double N){
+
+
+
 return 1.0;
  } 
   double myArcCos(double N){
 
+
 return 1.0;
     }
   double myArcTan(double N){
+
 
 return 1.0;
     }
@@ -125,6 +172,7 @@ Sqrt(Float x)
 //
   int parsehelper(String input) {
 // find dart library for parsing these polynomial strings
+
 
     return 0x0;
   }

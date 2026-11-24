@@ -12,8 +12,8 @@ void main() {
   runApp(const MyApp());
 }
 extension NumberParsing on String{
-    int parseInt(){
-        return int.parse(this);
+    double parseDouble(){
+        return double.parse(this);
       }
   }
 class SettingsScreenNotifier extends ChangeNotifier {
@@ -202,20 +202,20 @@ class _HomePageState extends State<HomePage> {
                 children: <Widget>[
                   // text contianers for input/output below, don't touch
                   Container(
-                    padding: const EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(17),
                     alignment: Alignment.centerRight,
                     child: Text(
                       userInput,
-                      style: const TextStyle(fontSize: 23, color: Colors.white),
+                      style: const TextStyle(fontSize: 21, color: Colors.white),
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(17),
                     alignment: Alignment.centerRight,
                     child: Text(
                       answer,
                       style: const TextStyle(
-                          fontSize: 30,
+                          fontSize: 25,
                           color: Colors.white,
                           fontWeight: FontWeight.bold),
                     ),
@@ -232,7 +232,6 @@ class _HomePageState extends State<HomePage> {
                     crossAxisCount: 4),
                 itemBuilder: (BuildContext context, int index) {
                   switch (index) {
-                    // these cases will need to be changed for alt array indices
                     case 0:
                       {
                         return MyButton(
@@ -365,32 +364,32 @@ class _HomePageState extends State<HomePage> {
                         return MyButton(
                           buttontapped: () {
                             setState(() {
-                              if (userInput.startsWith('cos') == true &&
+                              if (userInput.contains('cos') == true &&
                                   numtext.toString() != '') {
-                                userInput = 'cos($numtext)';
-                              } else if (userInput.startsWith('sin()') == true &&
+                                userInput += 'cos($numtext)';
+                              } else if (userInput.contains('sin()') == true &&
                                   numtext.toString() != '') {
-                                userInput = 'sin($numtext)';
-                              } else if (userInput.startsWith('tan()') == true &&
+                                userInput += 'sin($numtext)';
+                              } else if (userInput.contains('tan()') == true &&
                                   numtext.toString() != '') {
-                                userInput = 'tan($numtext)';
-                              } else if (userInput.startsWith('arcsin()') ==
+                                userInput += 'tan($numtext)';
+                              } else if (userInput.contains('arcsin()') ==
                                       true ) {
                                 // polynomial evaluator for symbols like x, y, etc
-                                userInput = 'arcsin($numtext)';
-                              } else if (userInput.startsWith('arccos()') ==
+                                userInput += 'arcsin($numtext)';
+                              } else if (userInput.contains('arccos()') ==
                                       true) {
                                 // polynomial evaluator for symbols like x, y, etc
-                                userInput = 'arccos($numtext)';
-                              } else if (userInput.startsWith('arctan()') == true) {
+                                userInput += 'arccos($numtext)';
+                              } else if (userInput.contains('arctan()') == true) {
                                 // polynomial evaluator for symbols like x, y, etc
-                                userInput = 'arctan($numtext)';
-                              } else if (userInput.startsWith('sqrt()') == true)  {
+                                userInput += 'arctan($numtext)';
+                              } else if (userInput.contains('sqrt()') == true)  {
                                 // square root function
-                                userInput = help.mySqrt('$numtext'.parseInt()).toString();
-                              } else if (userInput.startsWith('log') == true ) {
+                                userInput += (help.mySqrt('$numtext'.parseDouble())).toString();
+                              } else if (userInput.contains('log') == true ) {
                                 // square root function
-                                userInput = 'log($numtext)';
+                                userInput += (help.log2('$numtext'.parseDouble())).toString();
                               } else {
                                 userInput += buttons[index];
                               }

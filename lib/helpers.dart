@@ -4,7 +4,6 @@ import 'dart:math';
 class Helper {
   Helper();
 
-
   bool isOperator(String x) {
     if (x == '÷' ||
         x == '*' ||
@@ -47,13 +46,13 @@ class Helper {
   // log base 2 calc
   double logBase(num x, num base) => log(x) / log(base);
 // square root function bitwise
-  int mySqrt(int N) {
+  double mySqrt(double N) {
     // Find MSB(Most significant Bit) of N
     int msb = (log2(N)).round();
 
     // (a = 2^msb)
     int a = 1 << msb;
-    int result = 0;
+    double result = 0;
     while (a != 0) {
       // Check whether the current value
       // of 'a' can be added or not
@@ -69,6 +68,33 @@ class Helper {
     return result;
   }
 
+double mySin(double N){
+
+   return 1.0; 
+  }
+
+  double myCos(double N){
+
+return 1.0;
+    }
+
+  double myTan(double N){
+      return (mySin(N)/myCos(N));
+    }
+
+  double myArcSin(double N){
+return 1.0;
+ } 
+  double myArcCos(double N){
+
+return 1.0;
+    }
+  double myArcTan(double N){
+
+return 1.0;
+    }
+
+ 
   // port this algorithm from c++
   /* 
 Float

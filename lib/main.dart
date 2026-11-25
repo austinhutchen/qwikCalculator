@@ -365,7 +365,7 @@ class _HomePageState extends State<HomePage> {
                         return MyButton(
                           buttontapped: () {
                             setState(() {
-                              if (userInput.contains('cos') == true &&
+                              if (userInput.contains('cos()') == true &&
                                   numtext.toString() != '') {
                                 userInput += (help.myCos('$numtext'.parseDouble())).toString();
                               } else if (userInput.contains('sin()') == true &&
@@ -388,7 +388,7 @@ class _HomePageState extends State<HomePage> {
                               } else if (userInput.contains('sqrt()') == true)  {
                                 // square root function
                                 userInput += (help.mySqrt('$numtext'.parseDouble())).toString();
-                              } else if (userInput.contains('log') == true ) {
+                              } else if (userInput.contains('log()') == true ) {
                                 // square root function
                                 userInput += (help.log2('$numtext'.parseDouble())).toString();
                               } else if( userInput.contains('!') == true){

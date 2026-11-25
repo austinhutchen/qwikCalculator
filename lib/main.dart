@@ -182,7 +182,7 @@ class _HomePageState extends State<HomePage> {
     utf8.decode(integral),
     'd/dx',
     '*',
-    '1',
+    'e',
     '2',
     '3',
     '-',
@@ -393,7 +393,16 @@ class _HomePageState extends State<HomePage> {
                                 userInput += (help.log2('$numtext'.parseDouble())).toString();
                               } else if( userInput.contains('!') == true){
                                userInput+= (help.myFactorial('$numtext'.parseDouble())).toString();
-                              }else {
+                              }
+                              else if( userInput.contains('^')==true){
+                                 // integer pre ^
+                                 // integer post ^
+
+                                }
+                              else if (userInput.contains('e')==true){
+                                  userInput+=((help.myEulers('$numtext'.parseDouble())).toString());
+                                }
+                              else {
                                 userInput += buttons[index];
                               }
                             });

@@ -65,7 +65,6 @@ class Helper {
         }
         else{
            return x*myFactorial(x-1);
-
           }
     }
   bool validsign(int x) {
@@ -103,19 +102,22 @@ class Helper {
     return result;
   }
 
- double myPow(x,n){
-    for(int i=1;i<n;i++){
-        x*=x;
+ double myPow(double x,double n){
+  if(n==0){
+      return 1;
+    }
+    for(int i=0;i<n;i++){
+        x*=myPow(x,i-1);
       }
       return x;
   }
-double eulers(double X, int terms){
+double myEulers(double X){
 // sim of e^x = x^n / n! 
- double sum = 0.0;
-for(double i=0.0;i<terms;i++){
-        sum+= myPow(X,i)/myFactorial(i);
-  }
-return sum;
+  double sum =0;
+  for(double i=0.0;i<10.0;i++){
+       sum+= myPow(X,i)/myFactorial(i);
+    }
+   return sum;
   }
 double mySin(double N){
 //sin simulation using to calculate value  

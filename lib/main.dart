@@ -18,6 +18,9 @@ extension NumberParsing on String{
     double parseDouble(){
         return double.parse(this);
       }
+    int parseInt(){
+          return int.parse(this);
+      }
   }
 class SettingsScreenNotifier extends ChangeNotifier {
   /// 1
@@ -392,7 +395,7 @@ class _HomePageState extends State<HomePage> {
                                 // square root function
                                 userInput += (help.log2('$numtext'.parseDouble())).toString();
                               } else if( userInput.contains('!') == true){
-                               userInput+= (help.myFactorial('$numtext'.parseDouble())).toString();
+                               userInput+= (help.myFactorial('$numtext'.parseInt())).toString();
                               }
                               else if( userInput.contains('^')==true){
                                  // integer pre ^

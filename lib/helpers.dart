@@ -59,7 +59,7 @@ class Helper {
     return false;
   }
 
-  double myFactorial( double x){
+  int myFactorial( int x){
       if(x==0 || x==1){
          return x;
         }
@@ -101,21 +101,27 @@ class Helper {
     // Return the result
     return result;
   }
+double myDoublePow(double x, double n){
 
- double myPow(double x,double n){
+
+return 0.0;
+  }
+ double myIntegerPow(double x,int n){
   if(n==0){
       return 1;
     }
-    for(int i=0;i<n;i++){
-        x*=myPow(x,i-1);
-      }
+  if(n==1){
       return x;
+    }
+    else{
+        return (x*myIntegerPow(x,n-1));
+      }
   }
 double myEulers(double X){
 // sim of e^x = x^n / n! 
   double sum =0;
-  for(double i=0.0;i<10.0;i++){
-       sum+= myPow(X,i)/myFactorial(i);
+  for(int i=0;i<10000000;i++){
+       sum+= myIntegerPow(X,i)/myFactorial(i);
     }
    return sum;
   }

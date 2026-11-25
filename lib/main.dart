@@ -2,12 +2,15 @@ import 'helpers.dart';
 import 'package:flutter/material.dart';
 import 'buttons.dart';
 import 'package:math_expressions/math_expressions.dart';
-
+import 'dart:convert';
 final help = Helper();
 Parser p = Parser();
 bool tap = false;
 // for modular clock, switches between list views
 int timer = 0;
+List<int> integral = [
+0xE2, 0x88, 0xAB
+];
 void main() {
   runApp(const MyApp());
 }
@@ -176,7 +179,7 @@ class _HomePageState extends State<HomePage> {
     'y',
     '÷',
     'z',
-    'int',
+    utf8.decode(integral),
     'd/dx',
     '*',
     '1',

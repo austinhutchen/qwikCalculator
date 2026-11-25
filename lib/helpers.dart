@@ -104,9 +104,14 @@ class Helper {
   }
 
 
-double eulers(double N){
-// sim of e^x = x^n / n!
-return 0.0;
+double eulers(double X, const int terms){
+// sim of e^x = x^n / n! 
+ const int e = 2.7109;
+ double sum=0.0;
+for(int i=0;i<terms;i++){
+        sum+= N^i/myFactorial(i);
+  }
+return sum;
   }
 double mySin(double N){
 //sin simulation using to calculate value  

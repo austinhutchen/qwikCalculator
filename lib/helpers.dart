@@ -103,13 +103,17 @@ class Helper {
     return result;
   }
 
-
-double eulers(double X, const int terms){
+ double myPow(x,n){
+    for(int i=1;i<n;i++){
+        x*=x;
+      }
+      return x;
+  }
+double eulers(double X, int terms){
 // sim of e^x = x^n / n! 
- const int e = 2.7109;
- double sum=0.0;
-for(int i=0;i<terms;i++){
-        sum+= N^i/myFactorial(i);
+ double sum = 0.0;
+for(double i=0.0;i<terms;i++){
+        sum+= myPow(X,i)/myFactorial(i);
   }
 return sum;
   }
@@ -140,10 +144,10 @@ return 1.0;
 
 return 1.0;
     }
+
   double myArcTan(double N){
+    return myArcSin(N)/myArcCos(N);
 
-
-return 1.0;
     }
 
  

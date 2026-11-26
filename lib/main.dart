@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'buttons.dart';
 import 'package:math_expressions/math_expressions.dart';
 import 'dart:convert';
+import 'dart:ffi' as ffi;
+import 'dart:io' show Platform, Directory;
+import 'package:path/path.dart' as path;
 final help = Helper();
 Parser p = Parser();
 bool tap = false;
-// for modular clock, switches between list views
 int timer = 0;
 List<int> integral = [
 0xE2, 0x88, 0xAB
@@ -273,8 +275,7 @@ class _HomePageState extends State<HomePage> {
                         return MyButton(
                           buttontapped: () {
                             setState(() {
-                              userInput =
-                                  userInput.substring(0, userInput.length - 1);
+                              userInput = userInput.substring(0, userInput.length - 1);
                               if (userInput.isEmpty) {
                                 numtext = '';
                               }
@@ -368,6 +369,15 @@ class _HomePageState extends State<HomePage> {
                         return MyButton(
                           buttontapped: () {
                             setState(() {
+                              switch(userInput){
+                              
+
+                                
+
+
+
+
+                                }
                               if (userInput.contains('cos()') == true &&
                                   numtext.toString() != '') {
                                 userInput += (help.myCos('$numtext'.parseDouble())).toString();
@@ -398,6 +408,8 @@ class _HomePageState extends State<HomePage> {
                                userInput+= (help.myFactorial('$numtext'.parseInt())).toString();
                               }
                               else if( userInput.contains('^')==true){
+                                 int index= userInput.indexOf('^',0);
+                                 List <String> str = userInput.split('^');
                                  // integer pre ^
                                  // integer post ^
 

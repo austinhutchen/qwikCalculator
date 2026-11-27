@@ -9,7 +9,7 @@ void main(List<String> args) async{
       final builder = CBuilder.library(
       name:'helpers',
       asset: 'helpers.g.dart',
-      sources: ['src/add.c'],
+      sources: ['src/helpers.c'],
       );
       await builder.run(input: input, output:output);
     }

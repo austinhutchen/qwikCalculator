@@ -1,3 +1,4 @@
+
 import 'package:code_assets/code_assets.dart';
 import 'package:hooks/hooks.dart';
 import 'package:native_toolchain_c/native_toolchain_c.dart';
@@ -8,12 +9,15 @@ void main(List<String> args) async{
    if(input.config.buildCodeAssets){
       final builder = CBuilder.library(
       name:'helpers',
-      asset: 'helpers.g.dart',
-      sources: ['src/helpers.c'],
+      assetName: 'helpers.g.dart',
+      sources: ['lib/helpers.c'],
       );
       await builder.run(input: input, output:output);
     }
 
-    })
+    });
 
+  
   }
+
+  

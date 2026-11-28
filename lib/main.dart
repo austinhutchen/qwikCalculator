@@ -369,15 +369,7 @@ class _HomePageState extends State<HomePage> {
                         return MyButton(
                           buttontapped: () {
                             setState(() {
-                              switch(userInput){
-                              
 
-                                
-
-
-
-
-                                }
                               if (userInput.contains('cos()') == true &&
                                   numtext.toString() != '') {
                                 userInput += (help.myCos('$numtext'.parseDouble())).toString();
@@ -407,12 +399,16 @@ class _HomePageState extends State<HomePage> {
                               } else if( userInput.contains('!') == true){
                                userInput+= (help.myFactorial('$numtext'.parseInt())).toString();
                               }
-                              else if( userInput.contains('^')==true){
+                              else if( userInput.contains('^')==true && !userInput.endsWith('^')){
                                  int index= userInput.indexOf('^',0);
                                  List <String> str = userInput.split('^');
                                  // integer pre ^
+                                 double result=1.0;
+                                 for(int i=0;i<str.length;i+=2){
+                                  result *= help.myIntegerPow(str[i].parseDouble(),str[i+1].parseInt());
+                                  }
+                                  userInput+= (result.toString());
                                  // integer post ^
-
                                 }
                               else if (userInput.contains('e')==true){
                                   userInput+=((help.myEulers('$numtext'.parseDouble())).toString());

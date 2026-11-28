@@ -1,11 +1,7 @@
 
-
-
-
-
-
-Float
-Sqrt(Float x)
+/*
+float
+Sqrt(float x)
 {
     using F = decltype(x);
     if (x == 0 || x == INFINITY || isnan(x))
@@ -24,3 +20,4 @@ Sqrt(Float x)
     y = (y + x/y)/2;
     return std::ldexp(y, e/2);
 }
+*/

@@ -418,6 +418,7 @@ class _HomePageState extends State<HomePage> {
                                for(int i=0;i<str.length;i+=2){
                                 result*= help.myMultiply(str[i].parseInt(),str[i+1].parseInt());
                                 }
+                                result /= (str.length>>1);
                                 userInput+= result.toString();
                                   }
                                 else if(userInput.contains(utf8.decode(division))==true && !userInput.endsWith(utf8.decode(division))){
@@ -426,6 +427,7 @@ class _HomePageState extends State<HomePage> {
                                  for(int i=0;i<str.length;i+=2){
                                     result *= help.myDivide(str[i].parseInt(),str[i+1].parseInt());
                                   }
+                                  result /= (str.length<<1);
                                   userInput += result.toString();
                                   }
                               else if (userInput.contains('e')==true){
@@ -466,7 +468,9 @@ class _HomePageState extends State<HomePage> {
 
     // context model for dynamic screen overflow protection
     ContextModel cm = ContextModel();
-
+    if(userInput.contains(utf8.decode(division))){
+        userInput=userInput.replaceAll(utf8.decode(division),'/');
+      }
     // parser to parse string expressions into numerical value
     Expression exp = p.parse(userInput);
     double eval = exp.evaluate(EvaluationType.REAL, cm);

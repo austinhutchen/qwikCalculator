@@ -153,7 +153,7 @@ return 1.0;
 return 1.0;
     }
 
-  int multiply (int a, int b){
+  int myMultiply(int a, int b){
    int  result=0;
     if((a+b)%2==0){
         result=a<<(b>>1);
@@ -165,7 +165,7 @@ return 1.0;
       return result;
     }
     
-    int divide(int a, int b){
+    int myDivide(int a, int b){
       int result=0;
       if( (a+b)%2 ==0){
           result= a>>(b<<1);

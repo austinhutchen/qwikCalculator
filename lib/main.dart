@@ -416,7 +416,7 @@ class _HomePageState extends State<HomePage> {
                                List <String> str = userInput.split('*');
                                double result=1.0;
                                for(int i=0;i<str.length;i+=2){
-                                result*= help.multiply(str[i].parseInt(),str[i+1].parseInt());
+                                result*= help.myMultiply(str[i].parseInt(),str[i+1].parseInt());
                                 }
                                 userInput+= result.toString();
                                   }
@@ -424,7 +424,7 @@ class _HomePageState extends State<HomePage> {
                                  List<String> str = userInput.split(utf8.decode(division));
                                  double result =1.0;
                                  for(int i=0;i<str.length;i+=2){
-                                    result *= help.divide(str[i].parseInt(),str[i+1].parseInt());
+                                    result *= help.myDivide(str[i].parseInt(),str[i+1].parseInt());
                                   }
                                   userInput += result.toString();
                                   }
@@ -466,9 +466,7 @@ class _HomePageState extends State<HomePage> {
 
     // context model for dynamic screen overflow protection
     ContextModel cm = ContextModel();
-    if (userInput.contains('÷')) {
-      userInput = userInput.replaceAll(RegExp('[÷]'), '/');
-    }
+
     // parser to parse string expressions into numerical value
     Expression exp = p.parse(userInput);
     double eval = exp.evaluate(EvaluationType.REAL, cm);

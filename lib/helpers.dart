@@ -153,6 +153,29 @@ return 1.0;
 return 1.0;
     }
 
+  int multiply (int a, int b){
+   int  result=0;
+    if((a+b)%2==0){
+        result=a<<(b>>1);
+      }
+     else{
+        result= a;
+      }   
+   
+      return result;
+    }
+    
+    int divide(int a, int b){
+      int result=0;
+      if( (a+b)%2 ==0){
+          result= a>>(b<<1);
+        }
+      else{
+          result=a;
+        }
+      return result;
+      }
+
   double myArcTan(double N){
     return myArcSin(N)/myArcCos(N);
 

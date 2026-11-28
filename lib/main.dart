@@ -13,6 +13,7 @@ int timer = 0;
 List<int> integral = [
 0xE2, 0x88, 0xAB
 ];
+List<int> division = [ 0xC3, 0xB7 ];
 void main() {
   runApp(const MyApp());
 }
@@ -72,7 +73,7 @@ class _HomePageState extends State<HomePage> {
     '7',
     '8',
     '9',
-    '÷',
+    utf8.decode(division),
     '4',
     '5',
     '6',
@@ -410,6 +411,23 @@ class _HomePageState extends State<HomePage> {
                                   userInput+= (result.toString());
                                  // integer post ^
                                 }
+                                else if( userInput.contains('*')==true && !userInput.endsWith('*')){
+
+                               List <String> str = userInput.split('*');
+                               double result=1.0;
+                               for(int i=0;i<str.length;i+=2){
+                                result*= help.multiply(str[i].parseInt(),str[i+1].parseInt());
+                                }
+                                userInput+= result.toString();
+                                  }
+                                else if(userInput.contains(utf8.decode(division))==true && !userInput.endsWith(utf8.decode(division))){
+                                 List<String> str = userInput.split(utf8.decode(division));
+                                 double result =1.0;
+                                 for(int i=0;i<str.length;i+=2){
+                                    result *= help.divide(str[i].parseInt(),str[i+1].parseInt());
+                                  }
+                                  userInput += result.toString();
+                                  }
                               else if (userInput.contains('e')==true){
                                   userInput+=((help.myEulers('$numtext'.parseDouble())).toString());
                                 }
